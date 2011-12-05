@@ -1,0 +1,77 @@
+set ts=4
+set sw=4
+set st=4
+set bs=2
+set sta
+set ignorecase
+set smartcase
+set expandtab
+set hlsearch
+set incsearch
+set ai
+set cursorline
+set number
+set visualbell
+set ruler
+set ttyfast
+set laststatus=2
+set undofile
+set wrap
+set tags=tags;~
+syntax on
+color sunburst
+filetype plugin on
+filetype plugin indent on
+
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+set undodir=~/.vim/tmp//,/var/tmp//,/tmp//,.
+
+" Change <Leader> to ,
+let mapleader = ","
+
+" Quit NERDTree when opening a file
+let NERDTreeQuitOnOpen = 1
+
+" For commenting
+let NERDCustomDelimiters = {
+    \ 'clevercss': { 'left': '//' }
+    \}
+let NERDSpaceDelims = 1
+
+" Set GUI font type/size
+set gfn=Menlo:h14
+
+" Strip trailing whitespace from any python file before saving
+autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
+
+" Make command-t ignore some files
+set wildignore=*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea
+
+" Django specific stuff
+autocmd FileType html set ft=htmldjango.html
+autocmd FileType python set ft=python.django
+
+autocmd BufNewFile,BufRead *.ccss set filetype=clevercss
+
+" Custom maps
+map <Leader>n :NERDTree<CR>
+" Shift-Enter breaks out of current item and starts new line
+imap <S-CR> <Esc>o
+" Map Ctrl-C to the Esc key (cause I hate taking my hands off the home row)
+imap <C-c> <Esc>
+" Map Ctrl+_ to the closetag plugin
+imap <C-_> <C-x>/
+" rename variable locally
+nnoremap gr gd[{V%:s/<C-R>////gc<left><left><left>
+" rename variable globally
+nnoremap gR gD[{:%s/<C-R>////gc<left><left><left>
+" Open definition in new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Start NERDTree when vim opens, only in GUI mode
+"if has("gui_running")
+"    autocmd VimEnter * NERDTree
+"    autocmd BufEnter * NERDTreeMirror
+"    autocmd VimEnter * wincmd w
+"endif
+
