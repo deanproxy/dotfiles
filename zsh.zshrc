@@ -12,9 +12,10 @@ done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
 # Load up any files in .zsh we need
-if [ -d ~/.zsh ]; then
-    autoload -U ~/.zsh/functions/*(:t)
-    autoload -U ~/.zsh/environment/*(:t)
+if [ -d ~/.zsh/environment ]; then
+    foreach f (~/.zsh/environment/*) {
+        . "$f"
+    }
 fi
 
 # Aliases
