@@ -19,9 +19,9 @@ setopt ALL_EXPORT
 
 # Set/unset  shell options
 setopt   notify globdots correct pushdtohome cdablevars autolist
-setopt   correctall autocd recexact longlistjobs nohup incappendhistory sharehistory extendedhistory
-setopt   autoresume histignoredups pushdsilent menucomplete
-setopt   autopushd pushdminus extendedglob rcquotes mailwarning
+setopt   correctall recexact longlistjobs nohup incappendhistory sharehistory
+setopt   histignoredups pushdsilent menucomplete
+setopt   autopushd pushdminus extendedglob 
 unsetopt bgnice autoparamslash
 
 PAGER='less'
@@ -47,7 +47,7 @@ zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+# zstyle ':completion:*' menu select=1 _complete _ignored _approximate
 zstyle -e ':completion:*:approximate:*' max-errors \
     'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
@@ -132,13 +132,13 @@ function precmd {
 
 
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats "$PR_YELLOW%b%c%u"
+        zstyle ':vcs_info:*' formats "$PR_BOLD_YELLOW%b%c%u"
     } else {
-        zstyle ':vcs_info:*' formats "$PR_YELLOW%b%c%u$PR_RED●"
+        zstyle ':vcs_info:*' formats "$PR_BOLD_YELLOW%b%c%u$PR_RED●"
     }
     vcs_info
     if [ -z $vcs_info_msg_0_ ]; then
-        vcs_info_msg_0_="$PR_YELLOW%D{%a,%b%d}"
+        vcs_info_msg_0_="$PR_BOLD_YELLOW%D{%a,%b%d}"
     fi
  
 
@@ -214,14 +214,14 @@ setprompt () {
 
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
 $PR_BOLD_GREY$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT(\
-$PR_GREEN%(!.%SROOT%s.%n)@%m\
+$PR_BOLD_GREEN%(!.%SROOT%s.%n)@%m\
 $PR_BOLD_GREY)$PR_SHIFT_IN$PR_HBAR$PR_BOLD_GREY$PR_HBAR${(e)PR_FILLBAR}$PR_HBAR$PR_SHIFT_OUT(\
-$PR_BLUE%$PR_PWDLEN<...<%~%<<\
+$PR_BOLD_BLUE%$PR_PWDLEN<...<%~%<<\
 $PR_BOLD_GREY)$PR_SHIFT_IN$PR_HBAR$PR_BOLD_GREY$PR_URCORNER$PR_SHIFT_OUT\
 
 $PR_BOLD_GREY$PR_SHIFT_IN$PR_LLCORNER$PR_HBAR$PR_SHIFT_OUT(\
 %(?..$PR_RED%?$PR_BOLD_GREY:)\
-$PR_YELLOW%D{%H:%M}\
+$PR_BOLD_YELLOW%D{%H:%M}\
 $PR_BLUE:%(!.$PR_RED.$PR_WHITE)%#$PR_BOLD_GREY)$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
 $PR_BOLD_GREY$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
 $PR_NO_COLOUR '
