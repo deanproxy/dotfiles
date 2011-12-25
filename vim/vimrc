@@ -19,7 +19,6 @@ set undofile
 set wrap
 set tags=tags;~
 syntax on
-color sunburst
 filetype plugin on
 filetype plugin indent on
 
@@ -77,3 +76,7 @@ map <Leader>f :CommandTFlush<CR>
 "    autocmd VimEnter * wincmd w
 "endif
 
+if has("gui_running") && has("gui_gtk2")
+    set guifont=Monospace\ 10
+endif
+color sunburst
