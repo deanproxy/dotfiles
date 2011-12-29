@@ -68,6 +68,8 @@ nnoremap gR gD[{:%s/<C-R>////gc<left><left><left>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Flush command-t plugin (redo index)
 map <Leader>f :CommandTFlush<CR>
+" New tab that is more in line with standard window managers
+map <C-T> :tabnew<CR>
 
 " Start NERDTree when vim opens, only in GUI mode
 "if has("gui_running")
@@ -78,5 +80,6 @@ map <Leader>f :CommandTFlush<CR>
 
 if has("gui_running") && has("gui_gtk2")
     set guifont=Monospace\ 10
+    set lines=40 columns=125
 endif
 color sunburst
