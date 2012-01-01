@@ -25,6 +25,7 @@ setopt   autopushd pushdminus extendedglob
 unsetopt bgnice autoparamslash
 
 PAGER='less'
+TERM="xterm-256color"
 
 LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
@@ -110,7 +111,7 @@ zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipa
 zstyle '*' single-ignored show
 
 # Aliases
-alias ls='ls -G'
+#alias ls='ls -G'
 
 # vcs_info init
 autoload -Uz vcs_info
