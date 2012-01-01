@@ -138,7 +138,7 @@ function precmd {
     }
     vcs_info
     if [ -z $vcs_info_msg_0_ ]; then
-        vcs_info_msg_0_="$PR_BOLD_YELLOW%D{%a,%b%d}"
+        vcs_info_msg_0_="$PR_BOLD_YELLOW%D{%a,%b %d}"
     fi
  
 
