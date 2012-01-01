@@ -78,8 +78,4 @@ map <C-T> :tabnew<CR>
 "    autocmd VimEnter * wincmd w
 "endif
 
-if has("gui_running") && has("gui_gtk2")
-    set guifont=Monospace\ 10
-    set lines=40 columns=125
-endif
 color sunburst

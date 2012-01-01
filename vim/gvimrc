@@ -1,0 +1,4 @@
+if has("gui_gtk2")
+    set guifont=Monospace\ 10
+endif
+set lines=45 columns=125
