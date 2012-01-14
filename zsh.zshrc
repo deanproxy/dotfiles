@@ -34,7 +34,7 @@ LC_CTYPE=C
 unsetopt ALL_EXPORT
 alias yaourt="color='' yaourt"
 alias man='LC_ALL=C LANG=C man'
-alias ls='ls --color=auto '
+alias ls='ls -G'
 
 alias =clear
 autoload -U compinit
