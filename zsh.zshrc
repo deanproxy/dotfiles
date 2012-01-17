@@ -34,7 +34,7 @@ LC_CTYPE=C
 unsetopt ALL_EXPORT
 alias yaourt="color='' yaourt"
 alias man='LC_ALL=C LANG=C man'
-alias ls='ls --color=auto '
+alias ls='ls -G'
 
 alias =clear
 autoload -U compinit
@@ -101,7 +101,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs avahi-autoipd\
         avahi backup messagebus beagleindex debian-tor dhcp dnsmasq fetchmail\
         firebird gnats haldaemon hplip irc klog list man cupsys postfix\
-        proxy syslog www-data mldonkey sys snort
+        proxy syslog www-data mldonkey sys snort p4
 
 # SSH Completion
 zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
