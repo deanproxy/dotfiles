@@ -21,7 +21,6 @@ if exists("loaded_perforce")
 endif
 let loaded_perforce=1
 
-Decho "Loading Perforce, bitch."
 " define the mappings that provide the user interface to this plug-in
 augroup perforce
 
