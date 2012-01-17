@@ -71,9 +71,6 @@ map <Leader>f :CommandTFlush<CR>
 " New tab that is more in line with standard window managers
 map <C-T> :tabnew<CR>
 
-" Stupid Perforce crap
-" let g:no_perforce = 'true'
-
 " Start NERDTree when vim opens, only in GUI mode
 "if has("gui_running")
 "    autocmd VimEnter * NERDTree
