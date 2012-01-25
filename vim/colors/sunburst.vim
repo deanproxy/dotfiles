@@ -60,7 +60,7 @@ hi Visual                     ctermbg=236
 hi VisualNOS                  guibg=#202020
 hi VisualNOS                  ctermbg=235
 hi Comment      guifg=#5C5C5C               gui=italic
-hi Comment      ctermfg=236
+hi Comment      ctermfg=238
 hi Constant     guifg=#3387cc
 hi Constant     ctermfg=68
 hi Directory    guifg=#3387cc
