@@ -78,4 +78,13 @@ map <C-T> :tabnew<CR>
 "    autocmd VimEnter * wincmd w
 "endif
 
-color sunburst
+
+" color jellybean
+" color sunburst
+color vivify
+
+if !has('gui_running')
+    " hi Normal ctermbg=232
+    hi Normal ctermbg=None
+    hi CursorLine ctermbg=236
+endif
