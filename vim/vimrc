@@ -86,5 +86,6 @@ color vivify
 if !has('gui_running')
     " hi Normal ctermbg=232
     hi Normal ctermbg=None
+    hi NonText ctermbg=None
     hi CursorLine ctermbg=236
 endif
