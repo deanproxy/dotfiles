@@ -34,9 +34,9 @@ hi link javascriptNumber        Number
 hi link javascriptNull          Constant
 
 hi Normal       guifg=#f8f8f8 guibg=#000000
-hi Normal       ctermfg=253  ctermbg=0
+hi Normal       ctermfg=253 
 hi NonText      guifg=#666666 guibg=#000000
-hi NonText      ctermfg=241  ctermbg=0
+hi NonText      ctermfg=241
 hi StatusLine   guifg=#ffffff guibg=#121212 gui=bold
 hi StatusLine   ctermfg=15    ctermbg=233   cterm=bold
 hi StatusLineNC guifg=#ffffff guibg=#121212
