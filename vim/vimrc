@@ -81,7 +81,9 @@ map <C-T> :tabnew<CR>
 
 " color jellybean
 " color sunburst
-color vivify
+" color vivify
+" color deanify
+color oceanblack
 
 if !has('gui_running')
     " hi Normal ctermbg=232
