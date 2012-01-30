@@ -86,8 +86,7 @@ map <C-T> :tabnew<CR>
 color oceanblack
 
 if !has('gui_running')
-    " hi Normal ctermbg=232
     hi Normal ctermbg=None
     hi NonText ctermbg=None
-    hi CursorLine ctermbg=236
+    hi Comment cterm=None
 endif
