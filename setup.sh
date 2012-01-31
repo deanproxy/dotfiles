@@ -25,6 +25,10 @@ fi
 # Install my own theme
 cp $HOME/dotfiles/dean.zsh-theme $HOME/.oh-my-zsh/themes
 
+# Make the theme active, which involves editing .zshrc
+cat $HOME/.zshrc | sed 's/ZSH_THEME=\(.*\)/ZSH_THEME="dean"/' > zshrc
+mv zshrc $HOME/.zshrc
+
 # git setup
 git config --global user.name 'dean'
 if [ `hostname` = 'djones-macbook' ]; then
