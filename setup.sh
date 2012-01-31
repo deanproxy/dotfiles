@@ -16,11 +16,22 @@ fi
 if [ ! -h "$HOME/.gvimrc" ]; then
     ln -s "$directory/vim/gvimrc" "$HOME/.gvimrc"
 fi
-if [ ! -h "$HOME/.zshrc" ]; then
-    ln -s "$directory/zsh.zshrc" "$HOME/.zshrc"
+
+# Grab oh-my-zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
+
+# Install my own theme
+cp $HOME/dotfiles/dean.zsh-theme $HOME/.oh-my-zsh/themes
 
 # git setup
 git config --global user.name 'dean'
-git config --global user.email 'dean@deanproxy.com'
+if [ `hostname` = 'djones-macbook' ]; then
+    # Work computer, use work e-mail address
+    git config --global user.email 'djones@ncircle.com'
+else
+    git config --global user.email 'dean@deanproxy.com'
+fi
 git config --global color.ui 'auto'
+
