@@ -1,4 +1,4 @@
 if has("gui_gtk2")
     set guifont=Monospace\ 12
 endif
-set lines=45 columns=125
+set lines=50 columns=125
