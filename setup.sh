@@ -19,7 +19,15 @@ fi
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    if [ -z "`which zsh`" ]; then
+        sudo apt-get install zsh
+    fi
+    curl=`which curl`
+    if [ -z "$curl" ]; then
+        sudo apt-get install curl
+        curl=`which curl`
+    fi
+    $curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 
 # Install my own theme
@@ -28,6 +36,10 @@ cp $HOME/dotfiles/dean.zsh-theme $HOME/.oh-my-zsh/themes
 # Make the theme active, which involves editing .zshrc
 cat $HOME/.zshrc | sed 's/ZSH_THEME=\(.*\)/ZSH_THEME="dean"/' > zshrc
 mv zshrc $HOME/.zshrc
+
+# Make sure we have a 256 color term
+echo >> $HOME/.zshrc
+echo 'TERM="xterm-256color"' >> $HOME/.zshrc
 
 # git setup
 git config --global user.name 'dean'
