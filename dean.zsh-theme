@@ -24,6 +24,21 @@ local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 local current_time='(%{$terminfo[bold]$fg[yellow]%}%T%{$reset_color%})'
 
-PROMPT="╭─${user_host}%{$reset_color%}:${current_dir} ${git_branch}
-╰─${current_time}%# "
+# Sets up a nicer frame
+typeset -A altchar
+set -A altchar ${(s..)terminfo[acsc]}
+PR_SET_CHARSET="%{$terminfo[enacs]%}"
+PR_SHIFT_IN="%{$terminfo[smacs]%}"
+PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
+PR_HBAR=${altchar[q]:--}
+PR_ULCORNER=${altchar[l]:--}
+PR_LLCORNER=${altchar[m]:--}
+PR_LRCORNER=${altchar[j]:--}
+PR_URCORNER=${altchar[k]:--}
+
+local top_left_corner="$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT"
+local bottom_left_corner="$PR_SHIFT_IN$PR_LLCORNER$PR_HBAR$PR_SHIFT_OUT"
+
+PROMPT="${top_left_corner}${user_host}%{$reset_color%}:${current_dir} ${git_branch}
+${bottom_left_corner}${current_time}%# "
 RPS1="${return_code}"""
