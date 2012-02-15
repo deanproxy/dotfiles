@@ -310,9 +310,6 @@ call <SID>X("WarningMsg","ff5f5f","000000","bold")
 call <SID>X("WildMenu","000000","87ff00","bold")
 call <SID>X("pythonBuiltin","99cf50","","none")
 call <SID>X("JavaScriptStrings","87afff","","none")
-call <SID>X("phpStringSingle","e87afff","","none")
-call <SID>X("phpStringDouble","e87afff","","none")
-call <SID>X("htmlString","e87afff","","none")
 call <SID>X("htmlTagName","e2e4e5","","none")
 " delete functions {{{
 delf <SID>X
