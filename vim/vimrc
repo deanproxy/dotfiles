@@ -70,6 +70,10 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <Leader>f :CommandTFlush<CR>
 " New tab that is more in line with standard window managers
 map <C-T> :tabnew<CR>
+" Virtical split
+map <Leader>vs :vs<CR>
+" Horizontal split
+map <Leader>sp :sp<CR>
 " Increase and decrease the size of a split
 map + <C-W>>
 map - <C-W><
