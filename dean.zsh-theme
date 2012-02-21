@@ -1,7 +1,7 @@
 # This theme is mostly yanked from the bira theme, with elements of crunch and 
 # a few of my own tweaks to both. http://github.com/deanproxy
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$terminfo[bold]$fg[yellow]%}(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$terminfo[bold]$fg[yellow]%})%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=":(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %{$terminfo[bold]$fg[green]%}✓"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$terminfo[bold]$fg[red]%}✗"
 
@@ -39,6 +39,6 @@ PR_URCORNER=${altchar[k]:--}
 local top_left_corner="$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT"
 local bottom_left_corner="$PR_SHIFT_IN$PR_LLCORNER$PR_HBAR$PR_SHIFT_OUT"
 
-PROMPT="${top_left_corner}${user_host}%{$reset_color%}:${current_dir} ${git_branch}
+PROMPT="${top_left_corner}${user_host}%{$reset_color%}:${current_dir}${git_branch}
 ${bottom_left_corner}${current_time}%# "
 RPS1="${return_code}"""
