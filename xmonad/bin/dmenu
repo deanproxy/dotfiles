@@ -4,6 +4,6 @@
 # http://github.com/vicfryzel/xmonad-config
 
 
-/usr/bin/dmenu_path | /usr/bin/dmenu -fn '9x15' \
-  -nb '#000000' -nf '#FFFFFF' -sb '#7C7C7C' -sf '#CEFFAC' -p '>' -i 
+eval `exec /usr/bin/dmenu_path | /usr/bin/dmenu -fn '9x15' \
+  -nb '#000000' -nf '#FFFFFF' -sb '#333333' -sf '#CEFFAC' -p '>' -i`
 
