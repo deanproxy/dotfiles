@@ -9,9 +9,13 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Spacing
+import XMonad.Layout.Grid
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
+
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
@@ -77,12 +81,22 @@ myManageHook = composeAll
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (
-    Tall 1 (3/100) (1/2) |||
-    Mirror (Tall 1 (3/100) (1/2)) |||
-    tabbed shrinkText tabConfig |||
-    Full |||
-    spiral (6/7))
+nmaster = 1
+ratio = 1/2
+delta = 3/100
+
+tiled = spacing 5 $ Tall nmaster delta ratio
+grid = spacing 5 $ Grid
+full = noBorders $ Full
+
+myLayout = avoidStruts (tiled ||| grid ||| full)
+
+{- myLayout = avoidStruts ( -}
+    {- Tall 1 (3/100) (1/2) ||| -}
+    {- Mirror (Tall 1 (3/100) (1/2)) ||| -}
+    {- tabbed shrinkText tabConfig ||| -}
+    {- Full ||| -}
+    {- spiral (6/7)) -}
 
 
 ------------------------------------------------------------------------
@@ -107,9 +121,10 @@ xmobarTitleColor = "#FFB6B0"
 
 -- Color of current workspace in xmobar.
 xmobarCurrentWorkspaceColor = "#CEFFAC"
+xmobarCurrentWorkspaceBackgroundColor = "#333333"
 
 -- Width of the window border in pixels.
-myBorderWidth = 1
+myBorderWidth = 2
 
 
 ------------------------------------------------------------------------
@@ -138,7 +153,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "exe=`dmenu_path| dmenu -fn '10x20' -p '>' -i -nb '#000' -nf '#fff' -sf '#ffb6b0' -sb '#222'` && eval \"exec $exe\"")
+     spawn "eval \"exec ~/.xmonad/bin/dmenu\"")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
@@ -330,7 +345,7 @@ main = do
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor xmobarCurrentWorkspaceBackgroundColor
           , ppSep = "   "}
       , manageHook = manageDocks <+> myManageHook
       , startupHook = setWMName "LG3D"
