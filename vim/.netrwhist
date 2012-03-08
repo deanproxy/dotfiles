@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/djones/.vim/plugin'
 let g:netrw_dirhist_2='/Users/dean/Projects/deanproxy'
 let g:netrw_dirhist_3='/Users/dean/Dropbox/vim'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/home/dean/dotfiles/vim/colors'
 let g:netrw_dirhist_5='/Users/djones/Workspace/Shared/nsc/share/troubleshoot'
 let g:netrw_dirhist_6='/Users/djones/Workspace/Shared/nsc/main'
 let g:netrw_dirhist_7='/home/dean/dotfiles/vim/colors'
+let g:netrw_dirhist_8='/home/dean/.oh-my-zsh'

@@ -16,6 +16,12 @@ fi
 if [ ! -h "$HOME/.gvimrc" ]; then
     ln -s "$directory/vim/gvimrc" "$HOME/.gvimrc"
 fi
+if [ ! -h "$HOME/.xsessionrc" ]; then
+    ln -s "$directory/xsessionrc" "$HOME/.xsessionrc"
+fi
+if [ ! -d "$HOME/.xmonad" ]; then
+    ln -s "$directory/xmonad" "$HOME/.xmonad"
+fi
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
