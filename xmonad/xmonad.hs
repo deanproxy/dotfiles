@@ -54,11 +54,13 @@ myManageHook = composeAll
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
+    , className =? "Thunderbird"    --> doShift "3:mail"
     , resource  =? "gpicview"       --> doFloat
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doFloat
     , className =? "VirtualBox"     --> doShift "5:vm"
+    , className =? "Banshee"        --> doShift "4:media"
     , className =? "Xchat"          --> doShift "4:media"]
 
 
