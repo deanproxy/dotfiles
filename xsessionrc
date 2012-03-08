@@ -19,11 +19,12 @@ thunar --daemon &
 # Get us some decent gtk themes going
 gnome-settings-daemon &
 
+# Start the system tray
+tray &
+
 # Start network manage applet
 nm-applet &
 
-# Start the system tray
-tray &
 
 # Start two terminals
 # urxvt &

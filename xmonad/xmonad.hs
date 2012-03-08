@@ -51,6 +51,7 @@ myManageHook = composeAll
     [ className =? "Chromium"       --> doShift "2:web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Firefox"        --> doShift "2:web"
+    , className =? "Empathy"        --> doShift "2:web"
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
@@ -60,6 +61,7 @@ myManageHook = composeAll
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doFloat
     , className =? "VirtualBox"     --> doShift "5:vm"
+    , className =? "Rhythmbox"      --> doShift "4:media"
     , className =? "Banshee"        --> doShift "4:media"
     , className =? "Xchat"          --> doShift "4:media"]
 
