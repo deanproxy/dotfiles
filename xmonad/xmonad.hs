@@ -60,6 +60,7 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doFloat
+    , resource  =? "nm-connection-editor"  --> doFloat
     , className =? "VirtualBox"     --> doShift "5:vm"
     , className =? "Rhythmbox"      --> doShift "4:media"
     , className =? "Banshee"        --> doShift "4:media"
@@ -324,7 +325,7 @@ myStartupHook = return ()
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar -o ~/.xmonad/xmobar.hs"
+  xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc

@@ -3,10 +3,10 @@
 -- http://github.com/vicfryzel/xmonad-config
 
 Config {
-    font = "xft:Fixed-13"
+    font = "xft:Fixed-12"
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = Static { xpos = 0, ypos = 0, width = 1920, height = 36 },
+    position = TopW L 95,
     lowerOnStart = True,
     commands = [
         Run Weather "KATL" ["-t","<tempF>F <skyCondition>","-L","64","-H","77","-n","#CEFFAC","-h","#FFB6B0","-l","#96CBFE"] 36000,
@@ -17,5 +17,5 @@ Config {
     ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%StdinReader% }{ %multicpu%   %memory%   %KATL%   <fc=#FFFFCC>%date%</fc>                       "
+    template = "%StdinReader% }{ %multicpu%   %memory%   %KATL%   <fc=#FFFFCC>%date%</fc>  "
 }

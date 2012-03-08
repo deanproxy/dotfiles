@@ -26,13 +26,16 @@ tray &
 nm-applet &
 
 
-# Start two terminals
+# Start a terminal
 # urxvt &
-# urxvt &
+gnome-terminal &
 
-# Start two Chromium windows
+# Start browsers
 # chromium &
-# chromium &
+firefox &
+
+# Start some muther flippin chat client
+#empathy &
 
 # Start xchat (IRC client)
 # xchat &
