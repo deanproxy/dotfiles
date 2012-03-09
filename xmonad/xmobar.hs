@@ -6,7 +6,7 @@ Config {
     font = "xft:Fixed-11"
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = TopW L 95,
+    position = TopW L 90,
     lowerOnStart = True,
     commands = [
         Run Weather "KATL" ["-t","<tempF>F <skyCondition>","-L","64","-H","77","-n","#CEFFAC","-h","#FFB6B0","-l","#96CBFE"] 36000,
