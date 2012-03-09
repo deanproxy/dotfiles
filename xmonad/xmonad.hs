@@ -4,11 +4,15 @@
  
 import System.IO
 import System.Exit
+
 import XMonad
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+
+import XMonad.Config.Gnome
 
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
