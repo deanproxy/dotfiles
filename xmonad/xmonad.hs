@@ -4,17 +4,22 @@
  
 import System.IO
 import System.Exit
+
 import XMonad
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+
+import XMonad.Config.Gnome
 
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout.Grid
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
+import XMonad.Layout.PerWorkspace
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -87,9 +92,10 @@ delta = 3/100
 
 tiled = spacing 5 $ Tall nmaster delta ratio
 grid = spacing 5 $ Grid
+web = spacing 5 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
-myLayout = avoidStruts (tiled ||| grid ||| full)
+myLayout = avoidStruts (onWorkspace "2:web" web tiled ||| grid ||| full)
 
 {- myLayout = avoidStruts ( -}
     {- Tall 1 (3/100) (1/2) ||| -}
