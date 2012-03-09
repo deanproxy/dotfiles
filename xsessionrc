@@ -22,8 +22,8 @@ tray &
 # Start network manage applet
 #nm-applet &
 
-# Get us some decent gtk themes going
-#gnome-settings-daemon &
+# start skype for work purposes
+skype &
 
 # Start a terminal
 gnome-terminal &
@@ -38,5 +38,8 @@ firefox &
 # Start xchat (IRC client)
 # xchat &
 gnome-session &
+
+# Required for battery status and other things.
+gnome-settings-daemon &
 
 exec ssh-agent dbus-launch --sh-syntax --exit-with-session xmonad
