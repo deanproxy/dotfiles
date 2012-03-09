@@ -39,4 +39,4 @@ firefox &
 # xchat &
 gnome-session &
 
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+exec ssh-agent dbus-launch --sh-syntax --exit-with-session xmonad
