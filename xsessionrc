@@ -35,9 +35,12 @@ firefox &
 #gnome-session &
 
 # Seems this is needed to start the battery indicator in trayer
-gnome-settings-daemon &
+#gnome-settings-daemon &
 
 # Start the system tray
 ~/.xmonad/bin/tray &
+
+# Required for battery status and other things.
+gnome-settings-daemon &
 
 exec ssh-agent dbus-launch --sh-syntax --exit-with-session xmonad
