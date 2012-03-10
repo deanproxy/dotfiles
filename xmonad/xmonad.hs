@@ -73,6 +73,7 @@ myManageHook = composeAll
     , className =? "VirtualBox"     --> doShift "5:vm"
     , className =? "Rhythmbox"      --> doShift "4:media"
     , className =? "Banshee"        --> doShift "4:media"
+    , resource  =? "update-manager" --> doFloat
     , className =? "Xchat"          --> doShift "4:media"]
 
 
@@ -154,7 +155,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Lock the screen using xscreensaver.
   , ((modMask .|. controlMask, xK_l),
-     spawn "slock")
+     spawn "gnome-screensaver-command --activate")
 
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
