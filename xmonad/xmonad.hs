@@ -39,7 +39,7 @@ myTerminal = "/usr/bin/gnome-terminal"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:mail", "4:media","5:vm"] ++ map show [6..9]
+myWorkspaces = ["1:term","2:web","3:media","4:other"] ++ map show [6..9]
  
 
 ------------------------------------------------------------------------
@@ -57,24 +57,24 @@ myWorkspaces = ["1:term","2:web","3:mail", "4:media","5:vm"] ++ map show [6..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Chromium"       --> doShift "2:web"
+    [ resource  =? "chromium-browser"--> doShift "2:web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Firefox"        --> doShift "2:web"
     , className =? "Empathy"        --> doShift "2:web"
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
-    , className =? "Thunderbird"    --> doShift "3:mail"
+    , className =? "Thunderbird"    --> doShift "4:other"
     , resource  =? "gpicview"       --> doFloat
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doShift "6"
     , resource  =? "nm-connection-editor"  --> doFloat
-    , className =? "VirtualBox"     --> doShift "5:vm"
-    , className =? "Rhythmbox"      --> doShift "4:media"
-    , className =? "Banshee"        --> doShift "4:media"
+    , className =? "VirtualBox"     --> doShift "4:other"
+    , className =? "Rhythmbox"      --> doShift "3:media"
+    , className =? "Banshee"        --> doShift "3:media"
     , resource  =? "update-manager" --> doFloat
-    , className =? "Xchat"          --> doShift "4:media"]
+    , className =? "Xchat"          --> doShift "4:other"]
 
 
 ------------------------------------------------------------------------
@@ -274,7 +274,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Quit xmonad.
   , ((modMask .|. shiftMask, xK_q),
-     io (exitWith ExitSuccess))
+     spawn "gnome-session-quit --logout --no-prompt")
+     --io (exitWith ExitSuccess))
 
   -- Restart xmonad.
   , ((modMask, xK_q),
@@ -348,6 +349,7 @@ myStartupHook = return ()
 --
 main = do
   xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
+  spawnPipe "~/.xmonad/bin/starter"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+~/.xmonad/bin/tray &
+
+gnome-terminal &
+
+chromium-browser &
+
+empathy &
+
