@@ -20,6 +20,13 @@ if [ ! -d "$HOME/.xmonad" ]; then
     ln -s "$directory/xmonad" "$HOME/.xmonad"
 fi
 
+if [ ! -f /usr/share/gnome-session/sessions/xmonad.desktop ]; then
+    sudo cp "$directory/xmonad/sessions/xmonad.desktop" /usr/share/gnome-session/sessions
+fi
+if [ ! -f /usr/share/xsessions/xmonad-gnome.desktop ]; then
+    sudo cp "$directory/xmonad/sessions/xmonad-gnome.desktop" /usr/share/xsessions
+fi
+
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     if [ -z "`which zsh`" ]; then
