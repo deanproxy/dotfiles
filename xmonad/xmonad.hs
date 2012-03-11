@@ -74,6 +74,7 @@ myManageHook = composeAll
     , className =? "Rhythmbox"      --> doShift "3:media"
     , className =? "Banshee"        --> doShift "3:media"
     , resource  =? "update-manager" --> doFloat
+    , resource  =? "Do"             --> doIgnore
     , className =? "Xchat"          --> doShift "4:other"]
 
 
@@ -159,8 +160,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
-  , ((modMask, xK_p),
-     spawn "~/.xmonad/bin/dmenu")
+  {- , ((modMask, xK_p), -}
+        {- spawn "gnome-do") -}
+     --spawn "~/.xmonad/bin/dmenu")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
