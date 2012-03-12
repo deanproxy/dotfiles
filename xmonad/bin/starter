@@ -2,9 +2,11 @@
 
 #bluetooth-applet &
 
+~/.xmonad/bin/tray &
+
 xcompmgr &
 
-~/.xmonad/bin/tray &
+gmail-notify &
 
 gnome-terminal &
 
