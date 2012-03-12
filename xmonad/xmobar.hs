@@ -3,8 +3,8 @@
 -- http://github.com/vicfryzel/xmonad-config
 
 Config {
---    font = "xft:Fixed-11"
-    font = "xft:Ubuntu Mono:-Pixelsize=17,dpi=96,rgba=rgb,style=regular,hinting=true,antialias=true,hintstyle=hintfull"
+    font = "xft:Monospace-11,rgba=rgb,style=regular,hinting=true,antialias=true,hintstyle=hintfull"
+    --font = "xft:Ubuntu Mono:-Pixelsize=18,dpi=96,rgba=rgb,style=regular,hinting=true,antialias=true,hintstyle=hintfull"
     bgColor = "#000000",
     fgColor = "#ffffff",
     position = TopW L 89,

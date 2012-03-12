@@ -20,8 +20,8 @@ if [ ! -d "$HOME/.xmonad" ]; then
     ln -s "$directory/xmonad" "$HOME/.xmonad"
 fi
 
-if [ ! -f /usr/share/gnome-session/sessions/xmonad.desktop ]; then
-    sudo cp "$directory/xmonad/sessions/xmonad.desktop" /usr/share/gnome-session/sessions
+if [ ! -f /usr/share/gnome-session/sessions/xmonad.session ]; then
+    sudo cp "$directory/xmonad/sessions/xmonad.session" /usr/share/gnome-session/sessions
 fi
 if [ ! -f /usr/share/xsessions/xmonad-gnome.desktop ]; then
     sudo cp "$directory/xmonad/sessions/xmonad-gnome.desktop" /usr/share/xsessions

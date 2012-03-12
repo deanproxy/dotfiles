@@ -39,7 +39,7 @@ myTerminal = "/usr/bin/gnome-terminal"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:media","4:other"] ++ map show [6..9]
+myWorkspaces = ["1:term","2:web","3:media","4:other"] ++ map show [5..9]
  
 
 ------------------------------------------------------------------------
