@@ -7,6 +7,17 @@ else
     directory="$(pwd)/$basedir"
 fi
 
+# Install needed stuff 
+if ! dpkg -l | grep xmonad > /dev/null 2>&1; then
+    sudo apt-get install xmonad
+    sudo apt-get install xmobar
+    sudo apt-get install xcompmgr
+    sudo apt-get install trayer
+fi
+if ! dpkg -l | grep gmail-notify > /dev/null 2>&1; then
+    sudo apt-get install gmail-notify
+fi
+
 if [ ! -h "$HOME/.vim" ]; then
     ln -s "$directory/vim" "$HOME/.vim"
 fi
