@@ -1,16 +1,19 @@
 #!/bin/sh
 
+
+# Tray an applets
+~/.xmonad/bin/tray &
+gmail-notify &
 #bluetooth-applet &
 
-~/.xmonad/bin/tray &
-
+# Compisite 
 xcompmgr &
 
-gmail-notify &
-
+# Start on 1:term
 gnome-terminal &
 
+# Start on 2:web
+empathy &
 chromium-browser &
 
-empathy &
 
