@@ -75,6 +75,7 @@ myManageHook = composeAll
     , className =? "Banshee"        --> doShift "3:media"
     , resource  =? "update-manager" --> doFloat
     , resource  =? "Do"             --> doIgnore
+    , resource  =? "ubuntuone-control-panel-gtk"    --> doFloat
     , className =? "Xchat"          --> doShift "4:other"]
 
 
@@ -97,7 +98,7 @@ grid = spacing 5 $ Grid
 web = spacing 5 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
-myLayout = avoidStruts (onWorkspace "2:web" web tiled ||| grid ||| full)
+myLayout = avoidStruts (onWorkspace "2:web" web tiled ||| grid) ||| full
 
 {- myLayout = avoidStruts ( -}
     {- Tall 1 (3/100) (1/2) ||| -}
