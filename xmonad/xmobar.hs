@@ -7,7 +7,7 @@ Config {
     --font = "xft:Ubuntu Mono:-Pixelsize=18,dpi=96,rgba=rgb,style=regular,hinting=true,antialias=true,hintstyle=hintfull"
     bgColor = "#000000",
     fgColor = "#ffffff",
-    position = TopW L 89,
+    position = TopW L 83,
     lowerOnStart = True,
     commands = [
 --        Run Weather "KATL" ["-t","<tempF>F <skyCondition>","-L","64","-H","77","-n","#CEFFAC","-h","#FFB6B0","-l","#96CBFE"] 36000,

@@ -1,6 +1,5 @@
--- xmonad config used by Vic Fryzel
--- Author: Vic Fryzel
--- http://github.com/vicfryzel/xmonad-config
+-- xmonad config used by Dean Jones
+-- work based off of Vic Fryzel.
  
 import System.IO
 import System.Exit
@@ -60,19 +59,19 @@ myManageHook = composeAll
     [ resource  =? "chromium-browser"--> doShift "2:web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Firefox"        --> doShift "2:web"
-    , className =? "Empathy"        --> doShift "2:web"
+    , className =? "Empathy"        --> doShift "3:media"
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
     , className =? "Thunderbird"    --> doShift "4:other"
     , resource  =? "gpicview"       --> doFloat
-    , resource  =? "kdesktop"       --> doIgnore
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doShift "6"
     , resource  =? "nm-connection-editor"  --> doFloat
     , className =? "VirtualBox"     --> doShift "4:other"
     , className =? "Rhythmbox"      --> doShift "3:media"
     , className =? "Banshee"        --> doShift "3:media"
+    , resource  =? "nuvolaplayer"   --> doShift "3:media"
     , resource  =? "update-manager" --> doFloat
     , resource  =? "Do"             --> doIgnore
     , resource  =? "ubuntuone-control-panel-gtk"    --> doFloat
@@ -95,10 +94,10 @@ delta = 3/100
 
 tiled = spacing 5 $ Tall nmaster delta ratio
 grid = spacing 5 $ Grid
-web = spacing 5 $ Tall 1 (3/100) (80/100)
+media = spacing 5 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
-myLayout = avoidStruts (onWorkspace "2:web" web tiled ||| grid) ||| full
+myLayout = avoidStruts (onWorkspace "3:media" media tiled ||| grid) ||| full
 
 {- myLayout = avoidStruts ( -}
     {- Tall 1 (3/100) (1/2) ||| -}
@@ -160,12 +159,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      --spawn "gnome-screensaver-command --activate")
      spawn "slock")
 
-  -- Launch dmenu via yeganesh.
-  -- Use this to launch programs without a key binding.
-  {- , ((modMask, xK_p), -}
-        {- spawn "gnome-do") -}
-     --spawn "~/.xmonad/bin/dmenu")
-
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
   -- the mouse.
@@ -176,34 +169,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- That is, take a screenshot of everything you see.
   , ((modMask .|. controlMask .|. shiftMask, xK_p),
      spawn "~/.xmonad/bin/screenshot")
-
-  -- Mute volume.
-  , ((0, 0x1008FF12),
-     spawn "amixer -q set Front toggle")
-
-  -- Decrease volume.
-  , ((0, 0x1008FF11),
-     spawn "amixer -q set Front 10%-")
-
-  -- Increase volume.
-  , ((0, 0x1008FF13),
-     spawn "amixer -q set Front 10%+")
-
-  -- Audio previous.
-  , ((0, 0x1008FF16),
-     spawn "")
-
-  -- Play/pause.
-  , ((0, 0x1008FF14),
-     spawn "")
-
-  -- Audio next.
-  , ((0, 0x1008FF17),
-     spawn "")
-
-  -- Eject CD tray.
-  , ((0, 0x1008FF2C),
-     spawn "eject -T")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings

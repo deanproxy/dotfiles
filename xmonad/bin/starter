@@ -4,7 +4,7 @@
 # Tray an applets
 ~/.xmonad/bin/tray &
 gmail-notify &
-#bluetooth-applet &
+bluetooth-applet &
 
 # Compisite 
 xcompmgr &
@@ -13,7 +13,9 @@ xcompmgr &
 gnome-terminal &
 
 # Start on 2:web
-empathy &
 chromium-browser &
 
+# Start 3:media
+empathy &
+nuvolaplayer &
 
