@@ -17,6 +17,14 @@ fi
 if ! dpkg -l | grep gmail-notify > /dev/null 2>&1; then
     sudo apt-get install gmail-notify
 fi
+if [ ! -d ~/.themes/OMG ]; then
+    theme="omg_suite_by_nale12-d4rpdfd.zip"
+    mkdir ~/.themes
+    cd ~/.themes
+    wget http://www.deviantart.com/download/288398137/$theme
+    unzip $theme
+    rm $theme
+fi
 
 if [ ! -h "$HOME/.vim" ]; then
     ln -s "$directory/vim" "$HOME/.vim"
