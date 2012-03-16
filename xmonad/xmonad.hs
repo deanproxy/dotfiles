@@ -19,6 +19,7 @@ import XMonad.Layout.Grid
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.Named
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -92,12 +93,12 @@ nmaster = 1
 ratio = 1/2
 delta = 3/100
 
-tiled = spacing 5 $ Tall nmaster delta ratio
-grid = spacing 5 $ Grid
-media = spacing 5 $ Tall 1 (3/100) (80/100)
+tiled = spacing 3 $ Tall nmaster delta ratio
+grid = spacing 3 $ Grid
+media = spacing 3 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
-myLayout = avoidStruts (onWorkspace "3:media" media tiled ||| grid) ||| full
+myLayout = avoidStruts (onWorkspace "3:media" (named "Media" media) (named "Tiled" tiled) ||| named "Tiled" tiled ||| named "Grid" grid) ||| named "Full" full
 
 {- myLayout = avoidStruts ( -}
     {- Tall 1 (3/100) (1/2) ||| -}
@@ -317,14 +318,14 @@ myStartupHook = return ()
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  xmproc <- spawnPipe "~/.xmonad/bin/xmobar"
+  xmproc <- spawnPipe "~/.xmonad/bin/bar"
   gnomeRegister :: MonadIO m => m()
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor xmobarCurrentWorkspaceBackgroundColor
-          , ppSep = "   "}
+          , ppSep = " <fc=#FFB6B0>:</fc> "}
       , manageHook = manageDocks <+> myManageHook
       , startupHook = setWMName "LG3D"
   }
