@@ -317,8 +317,8 @@ myStartupHook = return ()
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  spawnPipe "~/.xmonad/bin/starter"
-  xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
+  xmproc <- spawnPipe "~/.xmonad/bin/xmobar"
+  gnomeRegister :: MonadIO m => m()
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc

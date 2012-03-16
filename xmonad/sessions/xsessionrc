@@ -21,7 +21,7 @@
 #bluetooth-applet &
 
 # Start a terminal
-gnome-terminal &
+#gnome-terminal &
 
 # Start some muther flippin chat client
 #empathy &
@@ -38,7 +38,9 @@ gnome-terminal &
 #gnome-settings-daemon &
 
 # Start the system tray
-#~/.xmonad/bin/tray &
+~/.xmonad/bin/tray &
+
+#nuvolaplayer &
 
 # Required for battery status and other things.
 #gnome-settings-daemon &
