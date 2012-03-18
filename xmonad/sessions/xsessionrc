@@ -1,11 +1,4 @@
 #!/bin/sh
-# Script to configure X, start common apps, and start xmonad.
-# Author: Vic Fryzel
-# http://github.com/vicfryzel/xmonad-config
-
-
-# Configure PATH so that we can access our scripts below
-#PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
 
 # Configure X
 #xsetroot -cursor_name left_ptr &
@@ -13,36 +6,20 @@
 # xscreensaver -no-splash &
 #feh --bg-scale ~/Pictures/chilewaterfall.jpg &
 
-# Automatically mount removable media
-#thunar --daemon &
-
-# Start network manage applet
-#nm-applet &
-#bluetooth-applet &
-
 # Start a terminal
-#gnome-terminal &
+gnome-terminal &
 
 # Start some muther flippin chat client
-#empathy &
+empathy &
 
 # Start browsers
-#chromium-browser &
+chromium-browser &
 #firefox &
 
-# Start xchat (IRC client)
-# xchat &
-#gnome-session &
-
-# Seems this is needed to start the battery indicator in trayer
-#gnome-settings-daemon &
+# Start some music stuff
+nuvolaplayer &
 
 # Start the system tray
 ~/.xmonad/bin/tray &
-
-#nuvolaplayer &
-
-# Required for battery status and other things.
-#gnome-settings-daemon &
 
 #exec ssh-agent dbus-launch --sh-syntax --exit-with-session xmonad

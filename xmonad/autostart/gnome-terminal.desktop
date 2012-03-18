@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Terminal
+Comment=Use the command line
+TryExec=gnome-terminal
+Exec=gnome-terminal
+Icon=utilities-terminal
+Type=Application
+X-GNOME-DocPath=gnome-terminal/index.html
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-terminal
+X-GNOME-Bugzilla-Component=BugBuddyBugs
+X-GNOME-Bugzilla-Version=3.0.1
+Categories=GNOME;GTK;Utility;TerminalEmulator;
+StartupNotify=true
+OnlyShowIn=GNOME;Unity;
+X-Ayatana-Desktop-Shortcuts=New
+X-Ubuntu-Gettext-Domain=gnome-terminal
+
+[New Shortcut Group]
+Name=New Terminal
+Exec=gnome-terminal
+TargetEnvironment=Unity

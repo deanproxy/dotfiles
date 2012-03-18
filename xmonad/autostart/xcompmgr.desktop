@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=xcompmgr
+Comment=Composite for X
+Exec=xcompmgr
+Terminal=false
+Type=Application
+StartupNotify=false

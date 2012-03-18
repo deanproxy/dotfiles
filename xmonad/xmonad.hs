@@ -60,7 +60,7 @@ myManageHook = composeAll
     [ resource  =? "chromium-browser"--> doShift "2:web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Firefox"        --> doShift "2:web"
-    , className =? "Empathy"        --> doShift "3:media"
+    , className =? "Empathy"        --> doShift "2:web"
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
@@ -93,12 +93,12 @@ nmaster = 1
 ratio = 1/2
 delta = 3/100
 
-tiled = spacing 3 $ Tall nmaster delta ratio
-grid = spacing 3 $ Grid
-media = spacing 3 $ Tall 1 (3/100) (80/100)
+tiled = spacing 5 $ Tall nmaster delta ratio
+grid = spacing 5 $ Grid
+web = spacing 5 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
-myLayout = avoidStruts (onWorkspace "3:media" (named "Media" media) (named "Tiled" tiled) ||| named "Tiled" tiled ||| named "Grid" grid) ||| named "Full" full
+myLayout = avoidStruts (onWorkspace "2:web" (named "Web" web) (named "Tiled" tiled) ||| named "Grid" grid) ||| named "Full" full
 
 {- myLayout = avoidStruts ( -}
     {- Tall 1 (3/100) (1/2) ||| -}
