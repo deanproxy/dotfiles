@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Trayer
-Comment=Tray for notifications
-Exec=~/.xmonad/bin/tray
-Terminal=false
-Type=Application
-StartupNotify=false

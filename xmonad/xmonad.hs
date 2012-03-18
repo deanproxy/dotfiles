@@ -320,6 +320,7 @@ myStartupHook = return ()
 main = do
   xmproc <- spawnPipe "~/.xmonad/bin/bar"
   gnomeRegister :: MonadIO m => m()
+  spawn "~/.xmonad/bin/tray"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
