@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Configure X
-#xsetroot -cursor_name left_ptr &
+xsetroot -cursor_name left_ptr &
 #xrdb -merge ~/.Xdefaults &
 # xscreensaver -no-splash &
-#feh --bg-scale ~/Pictures/chilewaterfall.jpg &
+feh --bg-scale ~/Pictures/Wallpapers/Kayaking/chilewaterfall.jpg &
 
 # Start a terminal
 #gnome-terminal &

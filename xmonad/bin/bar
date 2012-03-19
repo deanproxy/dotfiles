@@ -1,5 +1,5 @@
 #!/bin/sh
 # Launch xmobar properly
 
-/usr/bin/xmobar ~/.xmonad/xmobar.hs 
+xmobar ~/.xmonad/xmobar.hs 
 

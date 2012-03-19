@@ -45,11 +45,17 @@ fi
 if [ ! -f /usr/share/xsessions/xmonad-gnome.desktop ]; then
     sudo cp "$directory/xmonad/sessions/xmonad-gnome.desktop" /usr/share/xsessions
 fi
-if [ ! -d ~/.config/autostart ] || [ ! -f ~/.config/autostart/gnome-terminal.desktop ]; then
-    for i in $(ls "$directory/xmonad/autostart"); do
-        ln -s ~/.config/autostart/ $i
-    done
+if [ ! -f ~/.xsessionrc ]; then
+    ln -s "$directory/xmonad/sessions/xsessionrc" ~/.xsessionrc
 fi
+
+myautostart="$directory/xmonad/autostart"
+for i in $(ls $myautostart/*.desktop); do
+    filename=$(basename $i)
+    if [ ! -f ~/.config/autostart/$filename ]; then
+        ln -s $i ~/.config/autostart/$filename
+    fi
+done
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
