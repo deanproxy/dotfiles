@@ -49,6 +49,14 @@ if [ ! -f ~/.xsessionrc ]; then
     ln -s "$directory/xmonad/sessions/xsessionrc" ~/.xsessionrc
 fi
 
+# Install theme
+if [ ! -d ~/.themes/Universal ]; then
+    if [ ! -d ~/.themes ]; then
+        mkdir ~/.themes
+    fi
+    unzip -d ~/.themes "$directory/universal_by_nale12-d4hne5v.zip"
+fi
+
 myautostart="$directory/xmonad/autostart"
 for i in $(ls $myautostart/*.desktop); do
     filename=$(basename $i)

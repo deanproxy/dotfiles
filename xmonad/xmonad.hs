@@ -65,6 +65,7 @@ myManageHook = composeAll
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
     , className =? "Thunderbird"    --> doShift "4:other"
+    , className =? "Evolution"      --> doShift "4:other"
     , resource  =? "gpicview"       --> doFloat
     , className =? "MPlayer"        --> doFloat
     , resource  =? "skype"          --> doShift "6"
@@ -93,9 +94,9 @@ nmaster = 1
 ratio = 1/2
 delta = 3/100
 
-tiled = spacing 5 $ Tall nmaster delta ratio
-grid = spacing 5 $ Grid
-web = spacing 5 $ Tall 1 (3/100) (80/100)
+tiled = spacing 4 $ Tall nmaster delta ratio
+grid = spacing 4 $ Grid
+web = spacing 4 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
 myLayout = avoidStruts (onWorkspace "2:web" (named "Web" web) (named "Tiled" tiled) ||| named "Grid" grid) ||| named "Full" full
@@ -250,6 +251,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Restart xmonad.
   , ((modMask, xK_q),
      restart "xmonad" True)
+
+  -- Prompt to power off
+  , ((modMask .|. shiftMask, xK_s),
+    spawn "gnome-session-quit --power-off")
   ]
   ++
  
