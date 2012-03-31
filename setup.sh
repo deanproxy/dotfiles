@@ -1,6 +1,12 @@
 #!/bin/sh
 
-if [ `uname` != 'Darwin' ]; then
+linux=1
+if [ `uname` = 'Darwin' ]; then
+    linux=0
+fi
+
+# This stuff is for when we're in Linux. Everything else is cross platform or OSX specific.
+if [ $linux = 1 ]; then
     basedir=`dirname $0`
     if [ "$basedir" = "." ]; then
         directory=`pwd`
@@ -26,10 +32,10 @@ if [ `uname` != 'Darwin' ]; then
         unzip $theme
         rm $theme
     fi
-
     if [ ! -d "$HOME/.xmonad" ]; then
         ln -s "$directory/xmonad" "$HOME/.xmonad"
     fi
+
     if [ ! -f /usr/share/gnome-session/sessions/xmonad.session ]; then
         sudo cp "$directory/xmonad/sessions/xmonad.session" /usr/share/gnome-session/sessions
     fi
@@ -55,6 +61,13 @@ if [ `uname` != 'Darwin' ]; then
             ln -s $i ~/.config/autostart/$filename
         fi
     done
+    if [ -z "`which zsh`" ]; then
+        sudo apt-get install zsh
+    fi
+    if [ -z "`which curl`" ]; then
+        sudo apt-get install curl
+        curl=`which curl`
+    fi
 fi
 
 if [ ! -h "$HOME/.vim" ]; then
@@ -66,18 +79,14 @@ fi
 if [ ! -h "$HOME/.gvimrc" ]; then
     ln -s "$directory/vim/gvimrc" "$HOME/.gvimrc"
 fi
+if [ ! -h "$HOME/.ctags" ]; then
+    rm -f "$HOME/.ctags"
+    ln -s "$directory/vim/ctags" "$HOME/.ctags"
+fi
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    if [ -z "`which zsh`" ]; then
-        sudo apt-get install zsh
-    fi
-    curl=`which curl`
-    if [ -z "$curl" ]; then
-        sudo apt-get install curl
-        curl=`which curl`
-    fi
-    $curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 
 # Install my own theme
