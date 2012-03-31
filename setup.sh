@@ -1,29 +1,60 @@
 #!/bin/sh
 
-basedir=`dirname $0`
-if [ "$basedir" = "." ]; then
-    directory=`pwd`
-else
-    directory="$(pwd)/$basedir"
-fi
+if [ `uname` != 'Darwin' ]; then
+    basedir=`dirname $0`
+    if [ "$basedir" = "." ]; then
+        directory=`pwd`
+    else
+        directory="$(pwd)/$basedir"
+    fi
 
-# Install needed stuff 
-if ! dpkg -l | grep xmonad > /dev/null 2>&1; then
-    sudo apt-get install xmonad
-    sudo apt-get install xmobar
-    sudo apt-get install xcompmgr
-    sudo apt-get install trayer
-fi
-if ! dpkg -l | grep gmail-notify > /dev/null 2>&1; then
-    sudo apt-get install gmail-notify
-fi
-if [ ! -d ~/.themes/OMG ]; then
-    theme="omg_suite_by_nale12-d4rpdfd.zip"
-    mkdir ~/.themes
-    cd ~/.themes
-    wget http://www.deviantart.com/download/288398137/$theme
-    unzip $theme
-    rm $theme
+    # Install needed stuff 
+    if ! dpkg -l | grep xmonad > /dev/null 2>&1; then
+        sudo apt-get install xmonad
+        sudo apt-get install xmobar
+        sudo apt-get install xcompmgr
+        sudo apt-get install trayer
+    fi
+    if ! dpkg -l | grep gmail-notify > /dev/null 2>&1; then
+        sudo apt-get install gmail-notify
+    fi
+    if [ ! -d ~/.themes/OMG ]; then
+        theme="omg_suite_by_nale12-d4rpdfd.zip"
+        mkdir ~/.themes
+        cd ~/.themes
+        wget http://www.deviantart.com/download/288398137/$theme
+        unzip $theme
+        rm $theme
+    fi
+
+    if [ ! -d "$HOME/.xmonad" ]; then
+        ln -s "$directory/xmonad" "$HOME/.xmonad"
+    fi
+    if [ ! -f /usr/share/gnome-session/sessions/xmonad.session ]; then
+        sudo cp "$directory/xmonad/sessions/xmonad.session" /usr/share/gnome-session/sessions
+    fi
+    if [ ! -f /usr/share/xsessions/xmonad-gnome.desktop ]; then
+        sudo cp "$directory/xmonad/sessions/xmonad-gnome.desktop" /usr/share/xsessions
+    fi
+    if [ ! -f ~/.xsessionrc ]; then
+        ln -s "$directory/xmonad/sessions/xsessionrc" ~/.xsessionrc
+    fi
+
+    # Install theme
+    if [ ! -d ~/.themes/Universal ]; then
+        if [ ! -d ~/.themes ]; then
+            mkdir ~/.themes
+        fi
+        unzip -d ~/.themes "$directory/universal_by_nale12-d4hne5v.zip"
+    fi
+
+    myautostart="$directory/xmonad/autostart"
+    for i in $(ls $myautostart/*.desktop); do
+        filename=$(basename $i)
+        if [ ! -f ~/.config/autostart/$filename ]; then
+            ln -s $i ~/.config/autostart/$filename
+        fi
+    done
 fi
 
 if [ ! -h "$HOME/.vim" ]; then
@@ -35,35 +66,6 @@ fi
 if [ ! -h "$HOME/.gvimrc" ]; then
     ln -s "$directory/vim/gvimrc" "$HOME/.gvimrc"
 fi
-if [ ! -d "$HOME/.xmonad" ]; then
-    ln -s "$directory/xmonad" "$HOME/.xmonad"
-fi
-
-if [ ! -f /usr/share/gnome-session/sessions/xmonad.session ]; then
-    sudo cp "$directory/xmonad/sessions/xmonad.session" /usr/share/gnome-session/sessions
-fi
-if [ ! -f /usr/share/xsessions/xmonad-gnome.desktop ]; then
-    sudo cp "$directory/xmonad/sessions/xmonad-gnome.desktop" /usr/share/xsessions
-fi
-if [ ! -f ~/.xsessionrc ]; then
-    ln -s "$directory/xmonad/sessions/xsessionrc" ~/.xsessionrc
-fi
-
-# Install theme
-if [ ! -d ~/.themes/Universal ]; then
-    if [ ! -d ~/.themes ]; then
-        mkdir ~/.themes
-    fi
-    unzip -d ~/.themes "$directory/universal_by_nale12-d4hne5v.zip"
-fi
-
-myautostart="$directory/xmonad/autostart"
-for i in $(ls $myautostart/*.desktop); do
-    filename=$(basename $i)
-    if [ ! -f ~/.config/autostart/$filename ]; then
-        ln -s $i ~/.config/autostart/$filename
-    fi
-done
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -87,7 +89,9 @@ mv zshrc $HOME/.zshrc
 
 # Make sure we have a 256 color term
 echo >> $HOME/.zshrc
-echo 'TERM="xterm-256color"' >> $HOME/.zshrc
+if [ `uname` != 'Darwin' ]; then
+    echo 'TERM="xterm-256color"' >> $HOME/.zshrc
+fi
 
 # git setup
 git config --global user.name 'dean'
