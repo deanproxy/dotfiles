@@ -68,8 +68,6 @@ nnoremap gR gD[{:%s/<C-R>////gc<left><left><left>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Flush command-t plugin (redo index)
 map <Leader>f :CommandTFlush<CR>
-" New tab that is more in line with standard window managers
-map <C-T> :tabnew<CR>
 " Virtical split
 map <Leader>vs :vs<CR>
 " Horizontal split
