@@ -102,9 +102,7 @@ mv zshrc $HOME/.zshrc
 
 # Make sure we have a 256 color term
 echo >> $HOME/.zshrc
-if [ `uname` != 'Darwin' ]; then
-    echo 'TERM="xterm-256color"' >> $HOME/.zshrc
-fi
+echo 'TERM="xterm-256color"' >> $HOME/.zshrc
 
 # git setup
 git config --global user.name 'dean'
