@@ -83,6 +83,10 @@ if [ ! -h "$HOME/.ctags" ]; then
     rm -f "$HOME/.ctags"
     ln -s "$directory/vim/ctags" "$HOME/.ctags"
 fi
+if [ ! -h "$HOME/.tmux.conf" ]; then
+    rm -f "HOME/.tmux.conf"
+    ln -s "$directory/tmux.conf" "$HOME/.tmux.conf"
+fi
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
