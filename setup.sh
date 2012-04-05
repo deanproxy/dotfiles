@@ -1,5 +1,12 @@
 #!/bin/sh
 
+basedir=`dirname $0`
+if [ "$basedir" = "." ]; then
+    directory=`pwd`
+else
+    directory="$(pwd)/$basedir"
+fi
+
 linux=1
 if [ `uname` = 'Darwin' ]; then
     linux=0
@@ -7,13 +14,6 @@ fi
 
 # This stuff is for when we're in Linux. Everything else is cross platform or OSX specific.
 if [ $linux = 1 ]; then
-    basedir=`dirname $0`
-    if [ "$basedir" = "." ]; then
-        directory=`pwd`
-    else
-        directory="$(pwd)/$basedir"
-    fi
-
     # Install needed stuff 
     if ! dpkg -l | grep xmonad > /dev/null 2>&1; then
         sudo apt-get install xmonad
@@ -84,7 +84,7 @@ if [ ! -h "$HOME/.ctags" ]; then
     ln -s "$directory/vim/ctags" "$HOME/.ctags"
 fi
 if [ ! -h "$HOME/.tmux.conf" ]; then
-    rm -f "HOME/.tmux.conf"
+    rm -f "$HOME/.tmux.conf"
     ln -s "$directory/tmux.conf" "$HOME/.tmux.conf"
 fi
 
