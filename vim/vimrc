@@ -14,7 +14,7 @@ set number
 set visualbell
 set ruler
 set ttyfast
-set laststatus=2
+set laststatus=0
 set undofile
 set wrap
 set tags=tags;~
