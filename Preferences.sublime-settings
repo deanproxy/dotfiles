@@ -1,6 +1,7 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
-	"font_size": 14.0,
+    "font_face": "Menlo",
+	"font_size": 16.0,
 	"vintage_start_in_command_mode": true,
     "translate_tabs_to_spaces": true,
     "highlight_line": true,
