@@ -1,0 +1,3 @@
+[
+    { "keys": ["ctrl+c"], "command": "exit_insert_mode" }
+]

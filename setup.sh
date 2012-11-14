@@ -96,6 +96,10 @@ mv zshrc $HOME/.zshrc
 echo >> $HOME/.zshrc
 echo 'TERM="xterm-256color"' >> $HOME/.zshrc
 
+# Install sublime text files
+mkdir -p "~/Library/Application Support/Sublime Text 2/Packages/User"
+cp *sublime* "~/Library/Application Support/Sublime Text 2/Packages/User"
+
 # git setup
 git config --global user.name 'dean'
 if [ `hostname` = 'djones-macbook' ]; then

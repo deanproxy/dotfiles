@@ -1,7 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/usr/share/gnome-session/sessions'
 let g:netrw_dirhist_2='/home/dean/dotfiles'
 let g:netrw_dirhist_3='/home/dean/dotfiles/xmonad'
 let g:netrw_dirhist_4='/Users/djones/Workspace/Shared/nsc/main/manage'
 let g:netrw_dirhist_5='/Users/djones/Workspace/Shared/DatabaseTools/database_tools'
+let g:netrw_dirhist_6='/Users/djones/Dropbox/lunchoptin/lunchoptin'
+let g:netrw_dirhist_7='/Library/Python/2.6/site-packages/django/forms'
+let g:netrw_dirhist_8='/Users/djones/Workspace/purecloud-webapp/purecloud/hitrust_site/util_app/tests'

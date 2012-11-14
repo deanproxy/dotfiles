@@ -28,9 +28,6 @@ set undodir=~/.vim/tmp//,/var/tmp//,/tmp//,.
 " Change <Leader> to ,
 let mapleader = ","
 
-" Quit NERDTree when opening a file
-let NERDTreeQuitOnOpen = 1
-
 " For commenting
 let NERDCustomDelimiters = {
     \ 'clevercss': { 'left': '//' }
@@ -53,7 +50,7 @@ autocmd FileType python set ft=python.django
 autocmd BufNewFile,BufRead *.ccss set filetype=clevercss
 
 " Custom maps
-map <Leader>n :NERDTree<CR>
+" map <Leader>n :NERDTree<CR>
 " Shift-Enter breaks out of current item and starts new line
 imap <S-CR> <Esc>o
 " Map Ctrl-C to the Esc key (cause I hate taking my hands off the home row)
