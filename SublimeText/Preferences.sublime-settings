@@ -1,0 +1,10 @@
+{
+	"color_scheme": "Packages/User/DeanOcean.tmTheme",
+	"font_face": "Menlo",
+	"font_size": 16.0,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"translate_tabs_to_spaces": true,
+	"use_simple_full_screen": true,
+	"vintage_start_in_command_mode": true
+}

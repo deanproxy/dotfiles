@@ -2,4 +2,5 @@ ext.bundle
 *.hi
 *.o
 *.errors
+*.cache
 xmonad-i386-linux
