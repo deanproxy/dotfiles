@@ -79,6 +79,19 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Keyword, Other</string>
+			<key>scope</key>
+			<string>keyword.other</string>
+			<key>settings</key>
+			<dict>
+                <key>fontStyle</key>
+                <string>italic</string>
+				<key>foreground</key>
+				<string>#875f5f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Storage</string>
 			<key>scope</key>
 			<string>storage</string>
