@@ -109,4 +109,5 @@ else
 fi
 git config --global color.ui 'auto'
 git config --global merge.tool opendiff
+git config --global core.excludesfile ~/.gitignore
 
