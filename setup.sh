@@ -60,6 +60,14 @@ if [ $linux = 1 ]; then
         sudo apt-get install curl
         curl=`which curl`
     fi
+
+    # Install sublime text files
+    if [ ! -d ~/.config/sublime-text-2/Packages/User ]; then
+        mkdir -p ~/.config/sublime-text-2/Packages/User
+    fi
+    cp ~/dotfiles/SublimeText/* ~/.config/sublime-text-2/Packages/User
+else
+    ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
 fi
 
 if [ ! -h "$HOME/.vim" ]; then
@@ -96,14 +104,11 @@ mv zshrc $HOME/.zshrc
 echo >> $HOME/.zshrc
 echo 'TERM="xterm-256color"' >> $HOME/.zshrc
 
-# Install sublime text files
-ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
-
 # git setup
 git config --global user.name 'dean'
-if [ `hostname` = 'djones-macbook' ]; then
+if [ `hostname` = 'deanpad' ]; then
     # Work computer, use work e-mail address
-    git config --global user.email 'djones@ncircle.com'
+    git config --global user.email 'dean.jones@virtustream.com'
 else
     git config --global user.email 'dean@deanproxy.com'
 fi
