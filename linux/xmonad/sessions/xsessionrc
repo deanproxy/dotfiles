@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Configure X
-xsetroot -cursor_name left_ptr &
+#xsetroot -cursor_name left_ptr &
 #xrdb -merge ~/.Xdefaults &
 # xscreensaver -no-splash &
-feh --bg-scale ~/Pictures/Wallpapers/Kayaking/chilewaterfall.jpg &
+#feh --bg-scale ~/Pictures/Wallpapers/Kayaking/chilewaterfall.jpg &
 
 # Start a terminal
 #gnome-terminal &
@@ -22,4 +22,5 @@ feh --bg-scale ~/Pictures/Wallpapers/Kayaking/chilewaterfall.jpg &
 # Start the system tray
 #~/.xmonad/bin/tray &
 
-#exec ssh-agent dbus-launch --sh-syntax --exit-with-session xmonad
+#ssh-agent dbus-launch --sh-syntax --exit-with-session xmonad &
+#exec gnome-session --session=xmonad

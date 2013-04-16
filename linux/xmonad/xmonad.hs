@@ -20,6 +20,7 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Named
+import XMonad.Layout.SimpleFloat
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -39,7 +40,7 @@ myTerminal = "/usr/bin/gnome-terminal"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:media","4:other"] ++ map show [5..9]
+myWorkspaces = ["1:chat","2:web","3:term","4:code","5:other"] ++ map show [6..9]
  
 
 ------------------------------------------------------------------------
@@ -58,9 +59,11 @@ myWorkspaces = ["1:term","2:web","3:media","4:other"] ++ map show [5..9]
 --
 myManageHook = composeAll
     [ resource  =? "chromium-browser"--> doShift "2:web"
+    , resource  =? "gnome-terminal" --> doShift "3:term"
+    , resource  =? "sublime-text-2" --> doShift "4:code"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Firefox"        --> doShift "2:web"
-    , className =? "Empathy"        --> doShift "2:web"
+    , className =? "Pidgin"         --> doShift "1:chat"
     , className =? "Galculator"     --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "Google-chrome"  --> doShift "2:web"
@@ -68,16 +71,16 @@ myManageHook = composeAll
     , className =? "Evolution"      --> doShift "4:other"
     , resource  =? "gpicview"       --> doFloat
     , className =? "MPlayer"        --> doFloat
-    , resource  =? "skype"          --> doShift "6"
+    , resource  =? "skype"          --> doShift "1:chat"
     , resource  =? "nm-connection-editor"  --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:other"
-    , className =? "Rhythmbox"      --> doShift "3:media"
-    , className =? "Banshee"        --> doShift "3:media"
-    , resource  =? "nuvolaplayer"   --> doShift "3:media"
+    , className =? "VirtualBox"     --> doShift "5:other"
+    , className =? "Rhythmbox"      --> doShift "5:other"
+    , className =? "Banshee"        --> doShift "5:other"
+    , resource  =? "nuvolaplayer"   --> doShift "5:other"
     , resource  =? "update-manager" --> doFloat
     , resource  =? "Do"             --> doIgnore
     , resource  =? "ubuntuone-control-panel-gtk"    --> doFloat
-    , className =? "Xchat"          --> doShift "4:other"]
+    , className =? "Xchat"          --> doShift "1:chat"]
 
 
 ------------------------------------------------------------------------
@@ -96,10 +99,9 @@ delta = 3/100
 
 tiled = spacing 4 $ Tall nmaster delta ratio
 grid = spacing 4 $ Grid
-web = spacing 4 $ Tall 1 (3/100) (80/100)
 full = noBorders $ Full
 
-myLayout = avoidStruts (onWorkspace "2:web" (named "Web" web) (named "Tiled" tiled) ||| named "Grid" grid) ||| named "Full" full
+myLayout = avoidStruts (named "Tiled" tiled ||| named "Grid" grid) ||| named "Full" full ||| named "Float" simpleFloat
 
 {- myLayout = avoidStruts ( -}
     {- Tall 1 (3/100) (1/2) ||| -}
@@ -256,6 +258,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Prompt to power off
   , ((modMask .|. shiftMask, xK_s),
     spawn "gnome-session-quit --power-off")
+
+  -- Run Dmenu
+  , ((modMask .|. shiftMask, xK_p),
+    spawn "~/.xmonad/bin/dmenu")
   ]
   ++
  
@@ -327,6 +333,7 @@ main = do
   xmproc <- spawnPipe "~/.xmonad/bin/bar"
   gnomeRegister :: MonadIO m => m()
   spawn "~/.xmonad/bin/tray"
+  --xmonad $ gnomeConfig
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc

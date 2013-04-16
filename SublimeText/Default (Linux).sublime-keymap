@@ -1,2 +1,4 @@
 [
+    {"keys": ["ctrl+c"], "command": "exit_insert_mode"},
+    {"keys": ["g", "D"], "command": "goto_python_definition"}
 ]
