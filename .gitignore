@@ -4,3 +4,4 @@ ext.bundle
 *.errors
 *.cache
 xmonad-i386-linux
+vim/bundle

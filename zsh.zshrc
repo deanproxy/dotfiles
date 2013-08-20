@@ -243,6 +243,15 @@ $PR_BOLD_GREY$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_NO_COLOUR '
 setprompt
 
 
+search() {
+    if [ -z $1 and -z "$2" ]; then
+        echo "search pattern files"
+        return 1
+    fi
+
+    find . -name "$2" | xargs grep "$1"
+}
+
 # Load up any files in .zsh we need
 if [ -d ~/.zsh/environment ]; then
     foreach f (~/.zsh/environment/*) {

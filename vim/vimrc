@@ -19,11 +19,25 @@ set undofile
 set wrap
 set tags=tags;~
 syntax on
-filetype plugin on
-filetype plugin indent on
+set nocompatible
+filetype off
 
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 set undodir=~/.vim/tmp//,/var/tmp//,/tmp//,.
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Github bundles
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'wincent/Command-T'
+
+" Vim bundles
+
+filetype plugin indent on
+
+set statusline=+'%<\ %f\ %{fugitive#statusline()}'
 
 " Change <Leader> to ,
 let mapleader = ","
@@ -46,8 +60,6 @@ set wildignore=*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea
 " Django specific stuff
 autocmd FileType html set ft=htmldjango.html
 autocmd FileType python set ft=python.django
-
-autocmd BufNewFile,BufRead *.ccss set filetype=clevercss
 
 " Custom maps
 " map <Leader>n :NERDTree<CR>
@@ -72,6 +84,11 @@ map <Leader>sp :sp<CR>
 " Increase and decrease the size of a split
 map + <C-W>>
 map - <C-W><
+
+" For my documentation purposes --
+" gt is mapped to tabnext
+" gT is mapped to tabprevious
+
 
 " Start NERDTree when vim opens, only in GUI mode
 "if has("gui_running")
