@@ -32,6 +32,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'wincent/Command-T'
+Bundle 'nono/vim-handlebars'
 
 " Vim bundles
 
@@ -58,8 +59,11 @@ autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
 set wildignore=*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea
 
 " Django specific stuff
-autocmd FileType html set ft=htmldjango.html
+" autocmd FileType html set ft=htmldjango.html
 autocmd FileType python set ft=python.django
+
+" Handlebars
+au BufNewFile,BufRead *.tmpl set ft=html syntax=handlebars | runtime! ftplugin/handlebars.vim ftplugin/handlebars*.vim ftplugin/handlebars/*.vim
 
 " Custom maps
 " map <Leader>n :NERDTree<CR>
@@ -77,7 +81,7 @@ nnoremap gR gD[{:%s/<C-R>////gc<left><left><left>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Flush command-t plugin (redo index)
 map <Leader>f :CommandTFlush<CR>
-" Virtical split
+" Vertical split
 map <Leader>vs :vs<CR>
 " Horizontal split
 map <Leader>sp :sp<CR>
