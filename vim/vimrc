@@ -33,6 +33,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'wincent/Command-T'
 Bundle 'nono/vim-handlebars'
+Bundle 'airblade/vim-gitgutter'
 
 " Vim bundles
 
@@ -111,3 +112,7 @@ color oceanblack
 if !has('gui_running')
     hi Comment cterm=None
 endif
+
+let g:gitgutter_escape_grep = 1
+
+hi SignColumn ctermbg=0

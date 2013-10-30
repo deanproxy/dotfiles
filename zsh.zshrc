@@ -252,6 +252,8 @@ search() {
     find . -name "$2" | xargs grep "$1"
 }
 
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+
 # Load up any files in .zsh we need
 if [ -d ~/.zsh/environment ]; then
     foreach f (~/.zsh/environment/*) {

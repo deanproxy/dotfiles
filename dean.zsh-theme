@@ -24,7 +24,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 local user_host='%{$titlebar%}%{$terminfo[bold]$fg[green]%}%(!.%SROOT%s.%n)@%m%{$reset_color%}'
 local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
-local current_time='(%{$terminfo[bold]$fg[yellow]%}%T%{$reset_color%})'
+local current_time=' %F{239}%T%{$reset_color%} '
 
 # Sets up a nicer frame
 typeset -A altchar
@@ -41,6 +41,7 @@ PR_URCORNER=${altchar[k]:--}
 local top_left_corner="$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT"
 local bottom_left_corner="$PR_SHIFT_IN$PR_LLCORNER$PR_HBAR$PR_SHIFT_OUT"
 
-PROMPT="${top_left_corner}${user_host}%{$reset_color%}:${current_dir}${git_branch}
-${bottom_left_corner}${current_time}%# "
+# PROMPT="${top_left_corner}${user_host}%{$reset_color%}:${current_dir}${git_branch}
+# ${bottom_left_corner}${current_time}%# "
+PROMPT="${user_host}:${current_dir}${git_branch}${current_time}%#> "
 RPS1="${return_code}"""

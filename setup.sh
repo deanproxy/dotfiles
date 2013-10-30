@@ -67,7 +67,9 @@ if [ $linux = 1 ]; then
     fi
     cp ~/dotfiles/SublimeText/* ~/.config/sublime-text-2/Packages/User
 else
-    ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
+    if [ -d "~/Library/Application Support/Sublime Text 2" ]; then
+        ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
+    fi
 fi
 
 if [ ! -h "$HOME/.vim" ]; then
