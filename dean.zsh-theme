@@ -43,5 +43,5 @@ local bottom_left_corner="$PR_SHIFT_IN$PR_LLCORNER$PR_HBAR$PR_SHIFT_OUT"
 
 # PROMPT="${top_left_corner}${user_host}%{$reset_color%}:${current_dir}${git_branch}
 # ${bottom_left_corner}${current_time}%# "
-PROMPT="${user_host}:${current_dir}${git_branch}${current_time}%#> "
+PROMPT="${user_host}:${current_dir}${git_branch} %#> "
 RPS1="${return_code}"""
