@@ -90,6 +90,11 @@ if [ ! -h "$HOME/.tmux.conf" ]; then
     ln -s "$directory/tmux.conf" "$HOME/.tmux.conf"
 fi
 
+# Grab Vundle for Vim
+mkdir -p ~/.vim/bundle/
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+vim +BundleInstall +qall
+
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
