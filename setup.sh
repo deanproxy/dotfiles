@@ -12,9 +12,7 @@ if [ `uname` = 'Darwin' ]; then
     linux=0
 fi
 
-# This stuff is for when we're in Linux. Everything else is cross platform or OSX specific.
-if [ $linux = 1 ]; then
-    # Install needed stuff 
+install_xmonad() {
     if ! dpkg -l | grep xmonad > /dev/null 2>&1; then
         sudo apt-get install xmonad
         sudo apt-get install xmobar
@@ -27,7 +25,6 @@ if [ $linux = 1 ]; then
     if [ ! -d "$HOME/.xmonad" ]; then
         ln -s "$directory/linux/xmonad" "$HOME/.xmonad"
     fi
-
     if [ ! -f /usr/share/gnome-session/sessions/xmonad.session ]; then
         sudo cp "$directory/linux/xmonad/sessions/xmonad.session" /usr/share/gnome-session/sessions
     fi
@@ -36,6 +33,20 @@ if [ $linux = 1 ]; then
     fi
     if [ ! -f ~/.xsessionrc ]; then
         ln -s "$directory/linux/xmonad/sessions/xsessionrc" ~/.xsessionrc
+    fi
+}
+
+# This stuff is for when we're in Linux. Everything else is cross platform or OSX specific.
+if [ $linux = 1 ]; then
+    # Install needed stuff 
+    # install_xmonad()
+
+    if ! dpkg -l | grep xautomation > /dev/null 2>&1; then
+        sudo apt-get install xautomation
+    fi
+
+    if [ ! -f ~/.xbindkeysrc ]; then
+        ln -s ~/dotfiles/xbindkeysrc ~/.xbindkeysrc
     fi
 
     # Install theme
@@ -66,6 +77,7 @@ if [ $linux = 1 ]; then
         mkdir -p ~/.config/sublime-text-2/Packages/User
     fi
     cp ~/dotfiles/SublimeText/* ~/.config/sublime-text-2/Packages/User
+
 else
     if [ -d "~/Library/Application Support/Sublime Text 2" ]; then
         ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
@@ -91,9 +103,11 @@ if [ ! -h "$HOME/.tmux.conf" ]; then
 fi
 
 # Grab Vundle for Vim
-mkdir -p ~/.vim/bundle/
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +BundleInstall +qall
+if [ ! -d ~/.vim/bundle/vundle ]; then
+    mkdir -p ~/.vim/bundle/
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    vim +BundleInstall +qall
+fi
 
 # Grab oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
