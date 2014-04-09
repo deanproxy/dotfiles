@@ -116,3 +116,7 @@ endif
 let g:gitgutter_escape_grep = 1
 
 hi SignColumn ctermbg=0
+
+"  move text and rehighlight -- vim tip_id=224 
+vnoremap > ><CR>gv 
+vnoremap < <<CR>gv 

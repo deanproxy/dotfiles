@@ -1,4 +1,29 @@
 [
     {"keys": ["ctrl+c"], "command": "exit_insert_mode"},
+    { "keys": ["ctrl+c"], "command": "exit_visual_mode",
+        "context": [
+            { "key": "setting.command_mode"},
+            { "key": "num_selections", "operand": 1},
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": false }
+        ]
+    },
+    { "keys": ["ctrl+c"], "command": "hide_auto_complete", "context":
+        [
+            { "key": "auto_complete_visible", "operator": "equal", "operand": true }
+        ]
+    },
+
+    { "keys": ["ctrl+c"], "command": "vi_cancel_current_action", "context":
+        [
+            { "key": "setting.command_mode" },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": false },
+            { "key": "vi_has_input_state" }
+        ]
+    },
+    { "keys": ["Y"], "command": "set_action", "args": {
+        "action": "vi_copy",
+        "description": "Yank"},
+        "context": [{"key": "setting.command_mode"}]
+    },
     {"keys": ["g", "D"], "command": "goto_python_definition"}
 ]

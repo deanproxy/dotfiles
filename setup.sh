@@ -82,6 +82,9 @@ else
     if [ -d "~/Library/Application Support/Sublime Text 2" ]; then
         ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
     fi
+    if [ -d "~/Library/Application Support/Sublime Text 3" ]; then
+        ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 3/Packages/User"
+    fi
 fi
 
 if [ ! -h "$HOME/.vim" ]; then
