@@ -25,7 +25,6 @@
         "description": "Yank"},
         "context": [{"key": "setting.command_mode"}]
     },
-    # keybindings for CTags package
-    { "keys": ["g", "D"], "command": "navigate_to_definition" },
+    { "keys": ["g", "D"], "command": "goto_definition" },
     { "keys": ["`", "`"], "command": "jump_back"}
 ]
