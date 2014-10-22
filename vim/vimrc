@@ -34,6 +34,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'nono/vim-handlebars'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/nerdtree.git'
 
 " Vim bundles
 
@@ -80,8 +81,6 @@ nnoremap gr gd[{V%:s/<C-R>////gc<left><left><left>
 nnoremap gR gD[{:%s/<C-R>////gc<left><left><left>
 " Open definition in new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" Flush command-t plugin (redo index)
-map <Leader>f :CommandTFlush<CR>
 " Vertical split
 map <Leader>vs :vs<CR>
 " Horizontal split
@@ -89,6 +88,10 @@ map <Leader>sp :sp<CR>
 " Increase and decrease the size of a split
 map + <C-W>>
 map - <C-W><
+" Clear search buffer
+map <Leader>b :let @/=""<CR>
+" NERDTree
+map <Leader>t :NERDTreeToggle<CR>
 
 " For my documentation purposes --
 " gt is mapped to tabnext
