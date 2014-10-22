@@ -14,13 +14,17 @@ set number
 set visualbell
 set ruler
 set ttyfast
-set laststatus=0
+set laststatus=2
 set undofile
 set wrap
 set tags=tags;~
 syntax on
 set nocompatible
 filetype off
+" Airline shit
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='jellybeans'
+
 
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 set undodir=~/.vim/tmp//,/var/tmp//,/tmp//,.
@@ -36,6 +40,7 @@ Bundle 'kien/ctrlp.vim.git'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'jistr/vim-nerdtree-tabs.git'
+Plugin 'bling/vim-airline.git'
 
 " Vim bundles
 
