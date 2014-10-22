@@ -287,7 +287,7 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
 endfun
 " }}}
 
-call s:X("Normal","e8e8d3","151515","","White","")
+call s:X("Normal","e8e8d3","151515","","","")
 set background=dark
 
 if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
@@ -460,10 +460,10 @@ if !s:low_color
   hi CursorColumn ctermbg=234
   hi CursorLine ctermbg=234
   hi SpecialKey ctermbg=234
-  hi NonText ctermbg=233
+  hi NonText ctermbg=0
   hi LineNr ctermbg=233
   hi DiffText ctermfg=81
-  hi Normal ctermbg=233
+  hi Normal ctermbg=0
   hi DbgBreakPt ctermbg=53
 endif
 

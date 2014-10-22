@@ -31,8 +31,8 @@ call vundle#rc()
 " Github bundles
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'wincent/Command-T'
 Bundle 'nono/vim-handlebars'
+Bundle 'kien/ctrlp.vim.git'
 Bundle 'airblade/vim-gitgutter'
 
 " Vim bundles
@@ -107,7 +107,9 @@ map - <C-W><
 " color sunburst
 " color vivify
 " color deanify
-color oceanblack
+" color burnttoast256
+" color twilight256
+color jellybeans
 
 if !has('gui_running')
     hi Comment cterm=None
@@ -116,6 +118,7 @@ endif
 let g:gitgutter_escape_grep = 1
 
 hi SignColumn ctermbg=0
+hi link javaScriptStringS String
 
 "  move text and rehighlight -- vim tip_id=224 
 " vnoremap > ><CR>gv 
