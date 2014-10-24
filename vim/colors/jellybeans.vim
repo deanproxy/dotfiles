@@ -460,10 +460,10 @@ if !s:low_color
   hi CursorColumn ctermbg=234
   hi CursorLine ctermbg=234
   hi SpecialKey ctermbg=234
-  hi NonText ctermbg=0
+  hi NonText ctermbg=None
   hi LineNr ctermbg=233
   hi DiffText ctermfg=81
-  hi Normal ctermbg=0
+  hi Normal ctermbg=None
   hi DbgBreakPt ctermbg=53
 endif
 
