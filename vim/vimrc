@@ -23,7 +23,7 @@ set nocompatible
 filetype off
 " Airline shit
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='jellybeans'
+let g:airline_theme='dark'
 
 
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
