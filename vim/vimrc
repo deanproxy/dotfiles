@@ -42,6 +42,7 @@ Bundle 'scrooloose/nerdtree.git'
 Bundle 'jistr/vim-nerdtree-tabs.git'
 Plugin 'bling/vim-airline.git'
 Bundle 'groenewege/vim-less.git'
+Bundle 'scrooloose/syntastic.git'
 
 " Vim bundles
 
