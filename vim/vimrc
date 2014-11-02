@@ -131,7 +131,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " For my documentation purposes --
 " gt is mapped to tabnext
 " gT is mapped to tabprevious
-" :bd deletes current buffer
 
 
 " Start NERDTree when vim opens, only in GUI mode
