@@ -97,7 +97,7 @@ map <Leader>sp :sp<CR>
 map + <C-W>>
 map - <C-W><
 " Clear search buffer
-map <Leader>c :let @/=""<CR>
+map <Leader>cb :let @/=""<CR>
 " Move between buffers
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
