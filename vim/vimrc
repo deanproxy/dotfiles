@@ -97,7 +97,7 @@ map <Leader>sp :sp<CR>
 map + <C-W>>
 map - <C-W><
 " Clear search buffer
-map <Leader>b :let @/=""<CR>
+map <Leader>c :let @/=""<CR>
 " Move between buffers
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
@@ -107,7 +107,6 @@ map <Leader>b :let @/=""<CR>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>b :bp<CR>
 nnoremap <Leader>f :bn<CR>
-nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
 nnoremap <Leader>3 :3b<CR>
@@ -119,7 +118,12 @@ nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 " It's useful to show the buffer number in the status line.
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
+" set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P'
+
+" Vimgrep stuff
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprev<CR>
+nnoremap <Leader>co :copen<CR>
 
 " Airline stuff
 " Enable the list of buffers
@@ -132,6 +136,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " For my documentation purposes --
 " gt is mapped to tabnext
 " gT is mapped to tabprevious
+" :bd deletes current buffer
+" :vimgrep /pattern/ **/*.py searches a pattern in all files ending in .py
+" :cope opens list of errors, or files from vimgrep
 
 
 " Start NERDTree when vim opens, only in GUI mode
