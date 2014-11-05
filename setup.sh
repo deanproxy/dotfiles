@@ -41,29 +41,29 @@ if [ $linux = 1 ]; then
     # Install needed stuff 
     # install_xmonad()
 
-    if ! dpkg -l | grep xautomation > /dev/null 2>&1; then
-        sudo apt-get install xautomation
-    fi
+#    if ! dpkg -l | grep xautomation > /dev/null 2>&1; then
+#        sudo apt-get install xautomation
+#    fi
 
-    if [ ! -f ~/.xbindkeysrc ]; then
-        ln -s ~/dotfiles/xbindkeysrc ~/.xbindkeysrc
-    fi
+#    if [ ! -f ~/.xbindkeysrc ]; then
+#        ln -s ~/dotfiles/xbindkeysrc ~/.xbindkeysrc
+#    fi
 
     # Install theme
-    if [ ! -d ~/.themes/Universal ]; then
-        if [ ! -d ~/.themes ]; then
-            mkdir ~/.themes
-        fi
-        unzip -d ~/.themes "$directory/linux/universal_by_nale12-d4hne5v.zip"
-    fi
+#    if [ ! -d ~/.themes/Universal ]; then
+#        if [ ! -d ~/.themes ]; then
+#            mkdir ~/.themes
+#        fi
+#        unzip -d ~/.themes "$directory/linux/universal_by_nale12-d4hne5v.zip"
+#    fi
 
-    myautostart="$directory/linux/xmonad/autostart"
-    for i in $(ls $myautostart/*.desktop); do
-        filename=$(basename $i)
-        if [ ! -f ~/.config/autostart/$filename ]; then
-            ln -s $i ~/.config/autostart/$filename
-        fi
-    done
+#    myautostart="$directory/linux/xmonad/autostart"
+#    for i in $(ls $myautostart/*.desktop); do
+#        filename=$(basename $i)
+#        if [ ! -f ~/.config/autostart/$filename ]; then
+#            ln -s $i ~/.config/autostart/$filename
+#        fi
+#    done
     if [ -z "`which zsh`" ]; then
         sudo apt-get install zsh
     fi
@@ -71,12 +71,16 @@ if [ $linux = 1 ]; then
         sudo apt-get install curl
         curl=`which curl`
     fi
+    if [ -z "`which ctags`" ]; then
+        sudo apt-get install ctags
+        ctags=`which ctags`
+    fi
 
     # Install sublime text files
-    if [ ! -d ~/.config/sublime-text-2/Packages/User ]; then
-        mkdir -p ~/.config/sublime-text-2/Packages/User
-    fi
-    cp ~/dotfiles/SublimeText/* ~/.config/sublime-text-2/Packages/User
+    #if [ ! -d ~/.config/sublime-text-2/Packages/User ]; then
+    #    mkdir -p ~/.config/sublime-text-2/Packages/User
+    #fi
+    #cp ~/dotfiles/SublimeText/* ~/.config/sublime-text-2/Packages/User
 
 else
     if [ -d "~/Library/Application Support/Sublime Text 2" ]; then
@@ -130,9 +134,9 @@ echo 'TERM="xterm-256color"' >> $HOME/.zshrc
 
 # git setup
 git config --global user.name 'dean'
-if [ `hostname` = 'deanpad' ]; then
+if [ `hostname` = 'tacos' ]; then
     # Work computer, use work e-mail address
-    git config --global user.email 'dean.jones@virtustream.com'
+    git config --global user.email 'dean.jones@pamlabdev.com'
 else
     git config --global user.email 'dean@deanproxy.com'
 fi
