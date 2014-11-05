@@ -21,8 +21,8 @@ esac
 
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-local user_host='%{$titlebar%}%{$terminfo[bold]$fg[green]%}%(!.%SROOT%s.%n)@%m%{$reset_color%}'
-local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
+local user_host='%{$titlebar%}%{$fg_bold[magenta]%}%(!.%SROOT%s.%n)@%m%{$reset_color%}'
+local current_dir='%{$fg_bold[blue]%}%~%{$reset_color%}'
 local git_branch='$(git_prompt_info)%{$reset_color%}'
 local current_time=' %F{239}%T%{$reset_color%} '
 
