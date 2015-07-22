@@ -9,7 +9,8 @@
     },
     { "keys": ["ctrl+c"], "command": "hide_auto_complete", "context":
         [
-            { "key": "auto_complete_visible", "operator": "equal", "operand": true }
+            { "key": "auto_complete_visible", "operator": "equal", "operand": true },
+            { "key": "exit_insert_mode" }
         ]
     },
 
