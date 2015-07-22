@@ -1,9 +1,0 @@
-<snippet>
-    <content><![CDATA[(function(spotcloud, \$, undefined) {
-    $0
-})(window.spotcloud = window.spotcloud || {}, jQuery);]]></content>
-
-	<tabTrigger>ns:spotcloud</tabTrigger>
-	<scope>source.js</scope>
-	<description>Create a spotcloud namespace function.</description>
-</snippet>
