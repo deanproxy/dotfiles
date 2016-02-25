@@ -67,6 +67,18 @@ if [ $linux = 1 ]; then
     if [ -z "`which zsh`" ]; then
         sudo apt-get install zsh
     fi
+    if [ -z "`which vim`" ]; then
+        sudo apt-get install vim
+    fi
+    if [ -z "`which git`" ]; then
+        sudo apt-get install git
+    fi
+    if [ -z "`which ruby`" ]; then
+        sudo apt-get install ruby ruby-dev
+    fi
+    if [ -z "`which sqlite3`" ]; then
+        sudo apt-get install sqlite3 libsqlite3-dev
+    fi
     if [ -z "`which curl`" ]; then
         sudo apt-get install curl
         curl=`which curl`
@@ -107,6 +119,10 @@ fi
 if [ ! -h "$HOME/.tmux.conf" ]; then
     rm -f "$HOME/.tmux.conf"
     ln -s "$directory/tmux.conf" "$HOME/.tmux.conf"
+fi
+if [ ! -h ~/.config/gtk-3.0/gtk.css ]; then
+    rm -f ~/.config/gtk-3.0/gtk.css
+    ln -s "$directory/gtk.css" ~/.config/gtk-3.0/gtk.css
 fi
 
 # Grab Vundle for Vim
