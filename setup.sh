@@ -157,6 +157,7 @@ else
     git config --global user.email 'dean@deanproxy.com'
 fi
 git config --global color.ui 'auto'
+git config --global push.default simple
 git config --global merge.tool opendiff
 git config --global core.excludesfile ~/.gitignore
 
