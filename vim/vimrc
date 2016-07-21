@@ -43,6 +43,9 @@ Bundle 'jistr/vim-nerdtree-tabs.git'
 Plugin 'bling/vim-airline.git'
 Bundle 'groenewege/vim-less.git'
 Bundle 'scrooloose/syntastic.git'
+" Plugin 'othree/yajs.vim'
+Plugin 'othree/html5.vim'
+Plugin 'isRuslan/vim-es6'
 
 " Vim bundles
 
@@ -165,8 +168,12 @@ let g:gitgutter_escape_grep = 1
 
 hi SignColumn ctermbg=0
 hi link javaScriptStringS String
+hi link htmlLink Normal
 
 "  move text and rehighlight -- vim tip_id=224 
 " vnoremap > ><CR>gv 
 " vnoremap < <<CR>gv 
 map <Leader>/ <Leader>ci
+
+" Ignore some files
+set wildignore+=*.pyc,*.o,.git,node_modules,.DS_Store,*.db
