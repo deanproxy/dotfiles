@@ -45,6 +45,9 @@ if [ $linux = 1 ]; then
     if [ -z "`which kupfer`" ]; then
         sudo apt-get install kupfer
     fi
+    if [ -z "`which nm-applet`" ]; then
+        sudo apt-get install nm-applet
+    fi
 
     if [ ! -d "$HOME/.config/i3" ]; then
         mkdir -p "$HOME/.config/i3"
