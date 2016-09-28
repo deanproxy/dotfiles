@@ -42,6 +42,9 @@ if [ $linux = 1 ]; then
     if [ -z "`which i3blocks`" ]; then
         sudo apt-get install i3blocks
     fi
+    if [ -z "`which kupfer`" ]; then
+        sudo apt-get install kupfer
+    fi
 
     if [ ! -d "$HOME/.config/i3" ]; then
         mkdir -p "$HOME/.config/i3"
@@ -52,6 +55,7 @@ if [ $linux = 1 ]; then
         mkdir -p "$HOME/.local/share/fonts"
     fi
     cp ~/dotfiles/linux/*.ttf "$HOME/.local/share/fonts" 
+
 else
     if [ -d "~/Library/Application Support/Sublime Text 2" ]; then
         ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
