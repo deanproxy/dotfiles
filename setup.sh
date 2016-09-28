@@ -12,58 +12,10 @@ if [ `uname` = 'Darwin' ]; then
     linux=0
 fi
 
-install_xmonad() {
-    if ! dpkg -l | grep xmonad > /dev/null 2>&1; then
-        sudo apt-get install xmonad
-        sudo apt-get install xmobar
-        sudo apt-get install xcompmgr
-        sudo apt-get install trayer
-    fi
-    if ! dpkg -l | grep gmail-notify > /dev/null 2>&1; then
-        sudo apt-get install gmail-notify
-    fi
-    if [ ! -d "$HOME/.xmonad" ]; then
-        ln -s "$directory/linux/xmonad" "$HOME/.xmonad"
-    fi
-    if [ ! -f /usr/share/gnome-session/sessions/xmonad.session ]; then
-        sudo cp "$directory/linux/xmonad/sessions/xmonad.session" /usr/share/gnome-session/sessions
-    fi
-    if [ ! -f /usr/share/xsessions/xmonad-gnome.desktop ]; then
-        sudo cp "$directory/linux/xmonad/sessions/xmonad-gnome.desktop" /usr/share/xsessions
-    fi
-    if [ ! -f ~/.xsessionrc ]; then
-        ln -s "$directory/linux/xmonad/sessions/xsessionrc" ~/.xsessionrc
-    fi
-}
-
 # This stuff is for when we're in Linux. Everything else is cross platform or OSX specific.
 if [ $linux = 1 ]; then
     # Install needed stuff 
-    # install_xmonad()
 
-#    if ! dpkg -l | grep xautomation > /dev/null 2>&1; then
-#        sudo apt-get install xautomation
-#    fi
-
-#    if [ ! -f ~/.xbindkeysrc ]; then
-#        ln -s ~/dotfiles/xbindkeysrc ~/.xbindkeysrc
-#    fi
-
-    # Install theme
-#    if [ ! -d ~/.themes/Universal ]; then
-#        if [ ! -d ~/.themes ]; then
-#            mkdir ~/.themes
-#        fi
-#        unzip -d ~/.themes "$directory/linux/universal_by_nale12-d4hne5v.zip"
-#    fi
-
-#    myautostart="$directory/linux/xmonad/autostart"
-#    for i in $(ls $myautostart/*.desktop); do
-#        filename=$(basename $i)
-#        if [ ! -f ~/.config/autostart/$filename ]; then
-#            ln -s $i ~/.config/autostart/$filename
-#        fi
-#    done
     if [ -z "`which zsh`" ]; then
         sudo apt-get install zsh
     fi
@@ -87,13 +39,19 @@ if [ $linux = 1 ]; then
         sudo apt-get install ctags
         ctags=`which ctags`
     fi
+    if [ -z "`which i3blocks`" ]; then
+        sudo apt-get install i3blocks
+    fi
 
-    # Install sublime text files
-    #if [ ! -d ~/.config/sublime-text-2/Packages/User ]; then
-    #    mkdir -p ~/.config/sublime-text-2/Packages/User
-    #fi
-    #cp ~/dotfiles/SublimeText/* ~/.config/sublime-text-2/Packages/User
+    if [ ! -d "$HOME/.config/i3" ]; then
+        mkdir -p "$HOME/.config/i3"
+    fi
+    cp ~/dotfiles/linux/i3/* "$HOME/.config/i3"
 
+    if [ ! -d "$HOME/.local/share/fonts" ]; then
+        mkdir -p "$HOME/.local/share/fonts"
+    fi
+    cp ~/dotfiles/linux/*.ttf "$HOME/.local/share/fonts" 
 else
     if [ -d "~/Library/Application Support/Sublime Text 2" ]; then
         ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 2/Packages/User"
