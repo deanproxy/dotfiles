@@ -42,8 +42,8 @@ if [ $linux = 1 ]; then
     if [ -z "`which i3blocks`" ]; then
         sudo apt-get install i3blocks
     fi
-    if [ -z "`which kupfer`" ]; then
-        sudo apt-get install kupfer
+    if [ -z "`which rofi`" ]; then
+        sudo apt-get install rofi
     fi
     if [ -z "`which nm-applet`" ]; then
         sudo apt-get install nm-applet
