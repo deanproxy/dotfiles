@@ -48,25 +48,21 @@ if ($acpi =~ /(\d\d:\d\d):/) {
 
 # consider color and urgent flag only on discharge
 $color = "";
-if ($status eq 'Discharging') {
 
-	if ($percent < 20) {
-		$color = "#FF0000\n";
-        $icon = "";
-	} elsif ($percent < 40) {
-		$color = "#FFAE00\n";
-        $icon = "";
-	} elsif ($percent < 60) {
-		$color = "#FFF600\n";
-        $icon = "";
-	} elsif ($percent < 85) {
-		$color = "#A8FF00\n";
-        $icon = "";
-	}
-} else {
-    if ($percent != 100) {
-        $color = "#A8FF00\n";
-    }
+if ($percent < 20) {
+    $color = "#FF0000\n";
+    $icon = "";
+} elsif ($percent < 40) {
+    $color = "#FFAE00\n";
+    $icon = "";
+} elsif ($percent < 60) {
+    $color = "#FFF600\n";
+    $icon = "";
+} elsif ($percent < 85) {
+    $color = "#A8FF00\n";
+    $icon = "";
+} elsif ($percent < 100) {
+    $color = "#A8FF00\n";
 }
 
 # print text
