@@ -66,6 +66,10 @@ else
     if [ -d "~/Library/Application Support/Sublime Text 3" ]; then
         ln -s ~/dotfiles/SublimeText "~/Library/Application Support/Sublime Text 3/Packages/User"
     fi
+    if [ ! -d "$HOME/.atom" ]; then
+        mkdir -p "$HOME/.atom"
+        cp ~/dotfiles/styles.less "$HOME/.atom"
+    fi
 fi
 
 if [ ! -h "$HOME/.vim" ]; then
