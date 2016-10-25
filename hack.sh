@@ -8,6 +8,7 @@
 #   curl -sL https://raw.github.com/gist/2108403/hack.sh | sh
 #
 
+echo "Testy McTester"
 echo "Making a backup.."
 sudo tar -pzcf ~/preferences-`date "+%Y%m%d-%H%M%S"`.tgz ~/Library/Preferences /Library/Preferences
 if [ $? != 0 ]; then
