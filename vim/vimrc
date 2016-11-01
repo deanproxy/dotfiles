@@ -47,6 +47,16 @@ Bundle 'scrooloose/syntastic.git'
 " Plugin 'othree/yajs.vim'
 Plugin 'othree/html5.vim'
 Plugin 'isRuslan/vim-es6'
+Plugin 'xolox/vim-misc.git'
+Plugin 'xolox/vim-easytags.git'
+Plugin 'wookiehangover/jshint.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi.git'
+Plugin 'leafgarland/typescript-vim.git'
+Plugin 'Quramy/vim-js-pretty-template.git'
+Plugin 'Quramy/vim-dtsm.git'
+Plugin 'mhartington/vim-typings.git'
+Plugin 'tomasr/molokai.git'
 
 " Vim bundles
 
@@ -68,9 +78,6 @@ set gfn=Menlo:h14
 
 " Strip trailing whitespace from any python file before saving
 autocmd BufWritePre *.py normal m`:%s/\s\+$//e``
-
-" Make command-t ignore some files
-set wildignore=*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea
 
 " Django specific stuff
 " autocmd FileType html set ft=htmldjango.html
@@ -159,7 +166,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " color deanify
 " color burnttoast256
 " color twilight256
-color jellybeans
+" color jellybeans
+color molokai
 
 if !has('gui_running')
     hi Comment cterm=None
@@ -176,5 +184,9 @@ hi link htmlLink Normal
 " vnoremap < <<CR>gv 
 map <Leader>/ <Leader>ci
 
-" Ignore some files
-set wildignore+=*.pyc,*.o,.git,node_modules,.DS_Store,*.db
+" Make command-t ignore some files
+set wildignore=.DS_Store,*.db*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea,dist,bower_components,node_modules
+
+let g:molokai_original = 1
+let g:rehash256 = 1
+
