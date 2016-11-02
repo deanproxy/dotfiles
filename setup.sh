@@ -52,7 +52,7 @@ if [ $linux = 1 ]; then
     if [ ! -d "$HOME/.config/i3" ]; then
         mkdir -p "$HOME/.config/i3"
     fi
-    cp ~/dotfiles/linux/i3/* "$HOME/.config/i3"
+    cp -r ~/dotfiles/linux/i3/* "$HOME/.config/i3"
 
     if [ ! -d "$HOME/.local/share/fonts" ]; then
         mkdir -p "$HOME/.local/share/fonts"

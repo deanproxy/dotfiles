@@ -7,6 +7,9 @@ font pango:DejaVu Sans Mono 10
 # Border size
 new_window pixel 2
 
+gaps inner 5 
+gaps outer 2
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -74,12 +77,13 @@ bindsym $mod+a focus parent
 set $ws1 "1:Browser "
 set $ws2 "2:Editor "
 set $ws3 "3:Chat "
+set $ws4 "4:E-Mail "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -91,7 +95,7 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -118,16 +122,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -144,7 +148,6 @@ bindsym $mod+Shift+x exec "i3lock -c 000000"
 bar {
     position top
     status_command i3blocks -c /home/dean/.config/i3/i3blocks.conf
-    tray_output primary
     colors {
         separator #969896
         background #1d1f21
@@ -158,9 +161,9 @@ bar {
 
 # Audio bindings 
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
-    pactl set-sink-volume 0 +5%
+    pactl set-sink-volume 0 +1%
 bindsym XF86AudioLowerVolume exec --no-startup-id \
-    pactl set-sink-volume 0 -5%
+    pactl set-sink-volume 0 -1%
 bindsym XF86AudioMute exec --no-startup-id        \
     pactl set-sink-mute 0 toggle
 
@@ -178,21 +181,29 @@ bindsym Print exec screenshot
 # for_window [class="Empathy"] floating enable resize grow width 300px; resize grow height 400px;
 
 # default workspaces (use xprop)
-assign [class="google-chrome"] $ws1
+assign [class="Google-chrome"] $ws1
 assign [class="firefox"] $ws1
 assign [class="Atom"] $ws2
 assign [class="HipChat"] $ws3
 assign [class="Empathy"] $ws3
+assign [class="Gajim"] $ws3
+assign [class="Thunderbird"] $ws4
 
-exec synclient TapButton1=0 TapButton2=0
-exec xinput --set-prop 12 "Synaptics Two-Finger Scrolling" 1 1
+exec --no-startup-id ~/Scripts/docked.sh
+exec synclient TapButton1=0 TapButton2=0 PalmDetect=1 \
+               RightButtonAreaLeft=0 RightButtonAreaTop=0
+exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -f -b --backend=glx --vsync=drm
-exec --no-startup-id feh --bg-scale /usr/share/backgrounds/gnome/FootFall.png
+exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &
+exec --no-startup-id ~/Scripts/background.sh
+
+# start certain aps
+exec --no-startup-id gajim
 
 # colorclass            border  backgr. text    indicator  childbdr   
-client.focused          #000000 #000000 #1d1f21 #771f1f
+client.focused          #000000 #000000 #1d1f21 #5e3c58    #83adb5
 client.focused_inactive #373b41 #373b41 #771f1f
-client.unfocused        #000000 #000000 #969896 #771f1f
+client.unfocused        #000000 #000000 #969896 #ffffff
 client.urgent           #373b41 #cc6666 #ffffff #cc6666
 

@@ -57,6 +57,7 @@ Plugin 'Quramy/vim-js-pretty-template.git'
 Plugin 'Quramy/vim-dtsm.git'
 Plugin 'mhartington/vim-typings.git'
 Plugin 'tomasr/molokai.git'
+Plugin 'scwood/vim-hybrid'
 
 " Vim bundles
 
@@ -108,7 +109,7 @@ map <Leader>sp :sp<CR>
 map + <C-W>>
 map - <C-W><
 " Clear search buffer
-map <Leader>bb :let @/=""<CR>
+"map <Leader>bb :let @/=""<CR>
 " Move between buffers
 " Mappings to access buffers (don't use "\p" because a
 " delay before pressing "p" would accidentally paste).
@@ -167,7 +168,11 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " color burnttoast256
 " color twilight256
 " color jellybeans
-color molokai
+" color molokai
+set background=dark
+color hybrid
+
+set colorcolumn=120
 
 if !has('gui_running')
     hi Comment cterm=None
@@ -176,13 +181,19 @@ endif
 let g:gitgutter_escape_grep = 1
 
 hi SignColumn ctermbg=0
+hi Normal ctermbg=0
 hi link javaScriptStringS String
 hi link htmlLink Normal
+hi link typescriptBraces Normal
+hi link typescriptEndColons Normal
 
 "  move text and rehighlight -- vim tip_id=224 
 " vnoremap > ><CR>gv 
 " vnoremap < <<CR>gv 
 map <Leader>/ <Leader>ci
+
+" clear highlight
+map <Leader>c :noh<CR>
 
 " Make command-t ignore some files
 set wildignore=.DS_Store,*.db*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea,dist,bower_components,node_modules
