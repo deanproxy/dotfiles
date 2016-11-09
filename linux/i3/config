@@ -177,8 +177,12 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 # bindsym $mod+Shift+c exec google-chrome
-bindsym Print exec scrot
-bindsym --release $mod+p exec ~/Scripts/screenshot.sh select
+bindsym --release Print exec "scrot -e 'imgur $f | xclip -selection clipboard;\
+   i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
+   -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
+bindsym --release Ctrl+Print exec "scrot -s -e 'imgur $f | xclip -selection clipboard;\
+   i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
+   -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
 
 # what to do with certain apps
 # for_window [class="Empathy"] floating enable resize grow width 300px; resize grow height 400px;
