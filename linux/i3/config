@@ -2,7 +2,9 @@
 set $mod Mod1
 
 # Window title and bar font
-font pango:DejaVu Sans Mono 10
+#font pango:DejaVu Sans Mono 11
+#font pango:Cantarell 11
+font pango: Ubuntu Medium 11
 
 # Border size
 new_window pixel 2
@@ -175,7 +177,8 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 # bindsym $mod+Shift+c exec google-chrome
-bindsym Print exec screenshot
+bindsym Print exec scrot
+bindsym --release $mod+p exec ~/Scripts/screenshot.sh select
 
 # what to do with certain apps
 # for_window [class="Empathy"] floating enable resize grow width 300px; resize grow height 400px;
@@ -197,6 +200,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id compton -f -b --backend=glx --vsync=drm
 exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &
 exec --no-startup-id ~/Scripts/background.sh
+exec --no-startup-id dropbox start
 
 # start certain aps
 exec --no-startup-id gajim

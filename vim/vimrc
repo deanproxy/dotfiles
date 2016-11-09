@@ -1,6 +1,5 @@
-set ts=4
-set sw=4
-set st=4
+set ts=3
+set sw=3
 set bs=2
 set sta
 set ignorecase
@@ -17,14 +16,18 @@ set ttyfast
 set laststatus=2
 set undofile
 set hidden
-set wrap
+set nowrap
 set tags=tags;~
 syntax on
 set nocompatible
 filetype off
+
 " Airline shit
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
+
+" Don't highlight matched parens
+let loaded_matchparen = 1
 
 
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
@@ -193,7 +196,7 @@ hi link typescriptEndColons Normal
 map <Leader>/ <Leader>ci
 
 " clear highlight
-map <Leader>c :noh<CR>
+map <Leader>m :noh<CR>
 
 " Make command-t ignore some files
 set wildignore=.DS_Store,*.db*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea,dist,bower_components,node_modules
