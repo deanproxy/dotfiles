@@ -1,6 +1,6 @@
 #!/bin/sh
-# Install imgur and xsel:
-#  - sudo apt install xsel
+# Install scrot, imgur and xsel:
+#  - sudo apt install xsel scrot
 #  - sudo npm i -g imgur
 
 if [ "$1" = "select" ]; then
