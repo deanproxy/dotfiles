@@ -162,6 +162,23 @@ bindsym $mod+Shift+x exec "i3lock -c 000000"
 bar {
     position top
     status_command i3blocks -c /home/dean/.config/i3/i3blocks.conf
+    output DP1
+    tray_output primary
+    colors {
+        separator #969896
+        background #1d1f21
+        statusline #c5c8c6
+        focused_workspace #81a2be #81a2be #1d1f21
+        active_workspace #373b41 #373b41 #ffffff
+        inactive_workspace #282a2e #282a2e #969896
+        urgent_workspace #cc6666 #cc6666 #ffffff
+    }
+}
+
+bar {
+    position top
+    status_command i3blocks -c /home/dean/.config/i3/i3blocks.conf
+    output eDP1
     colors {
         separator #969896
         background #1d1f21
@@ -181,14 +198,17 @@ bindsym XF86AudioLowerVolume exec --no-startup-id \
 bindsym XF86AudioMute exec --no-startup-id        \
     pactl set-sink-mute 0 toggle
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+# brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
+# Player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-# bindsym $mod+Shift+c exec google-chrome
+
+# Screenshots!
 bindsym --release Print exec "scrot -e 'imgur $f | xclip -selection clipboard;\
    i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
    -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
