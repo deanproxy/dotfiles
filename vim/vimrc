@@ -18,6 +18,7 @@ set undofile
 set hidden
 set nowrap
 set tags=tags;~
+set smartindent
 syntax on
 set nocompatible
 filetype off
@@ -61,6 +62,7 @@ Plugin 'Quramy/vim-dtsm.git'
 Plugin 'mhartington/vim-typings.git'
 Plugin 'tomasr/molokai.git'
 Plugin 'scwood/vim-hybrid'
+Plugin 'burnettk/vim-angular'
 
 " Vim bundles
 
@@ -204,3 +206,4 @@ set wildignore=.DS_Store,*.db*.o,*.pyc,*.git,*.iml,*.obj,*.class,.idea,dist,bowe
 let g:molokai_original = 1
 let g:rehash256 = 1
 
+let g:angular_source_directory = 'app/src'
