@@ -48,7 +48,6 @@ Bundle 'jistr/vim-nerdtree-tabs.git'
 Plugin 'bling/vim-airline.git'
 Bundle 'groenewege/vim-less.git'
 Bundle 'scrooloose/syntastic.git'
-" Plugin 'othree/yajs.vim'
 Plugin 'othree/html5.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'xolox/vim-misc.git'
@@ -63,6 +62,7 @@ Plugin 'mhartington/vim-typings.git'
 Plugin 'tomasr/molokai.git'
 Plugin 'scwood/vim-hybrid'
 Plugin 'burnettk/vim-angular'
+Bundle 'djoshea/vim-autoread'
 
 " Vim bundles
 
