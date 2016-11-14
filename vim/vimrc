@@ -142,6 +142,9 @@ nnoremap <Leader>cn :cnext<CR>
 nnoremap <Leader>cp :cprev<CR>
 nnoremap <Leader>co :copen<CR>
 
+" Fugitive maps
+map <Leader>gb :Gblame<CR>
+
 " Airline stuff
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
