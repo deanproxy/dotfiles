@@ -44,7 +44,6 @@ Bundle 'nono/vim-handlebars'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdtree.git'
-Bundle 'jistr/vim-nerdtree-tabs.git'
 Plugin 'bling/vim-airline.git'
 Bundle 'groenewege/vim-less.git'
 Bundle 'scrooloose/syntastic.git'
@@ -93,7 +92,7 @@ autocmd FileType python set ft=python.django
 au BufNewFile,BufRead *.tmpl set ft=html syntax=handlebars | runtime! ftplugin/handlebars.vim ftplugin/handlebars*.vim ftplugin/handlebars/*.vim
 
 " Custom maps
-map <Leader>n :NERDTreeTabsToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
 " Shift-Enter breaks out of current item and starts new line
 imap <S-CR> <Esc>o
 " Map Ctrl-C to the Esc key (cause I hate taking my hands off the home row)
@@ -144,6 +143,8 @@ nnoremap <Leader>co :copen<CR>
 
 " Fugitive maps
 map <Leader>gb :Gblame<CR>
+
+nnoremap <leader>q :bd<cr>
 
 " Airline stuff
 " Enable the list of buffers

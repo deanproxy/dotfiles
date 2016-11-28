@@ -1,73 +1,25 @@
-#!/usr/bin/perl
-#
-# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
-# Copyright 2014 Vivien Didelot <vivien@didelot.org>
-#
-# Licensed under the terms of the GNU GPL v3, or any later version.
-#
-# This script is meant to use with i3blocks. It parses the output of the "acpi"
-# command (often provided by a package of the same name) to read the status of
-# the battery, and eventually its remaining time (to full charge or discharge).
-#
-# The color will gradually change for a percentage below 85%, and the urgency
-# (exit code 33) is set if there is less that 5% remaining.
+#!/bin/bash
 
-use strict;
-use warnings;
-use utf8;
+percent=`acpi -b | awk '{print $4}' | sed 's/[^0-9]*//g' | awk '{s+=$1} END {print int((s+1)/2)}'`
 
-my $acpi;
-my $status;
-my $percent;
-my $full_text;
-my $short_text;
-my $icon;
-my $color;
-my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+full_text="$percent%"
+if [ $percent -lt 20 ]; then
+    color="#FF0000\n"
+    icon=""
+elif [ $percent -lt 40 ]; then
+    color="#FFAE00\n"
+    icon=""
+elif [ $percent -lt 60 ]; then
+    color="#FFF600\n"
+    icon=""
+elif [ $percent -lt 85 ]; then
+    color="#A8FF00\n"
+    icon=""
+else
+    color="#A8FF00\n"
+    icon="" 
+fi
 
-# read the first line of the "acpi" command output
-open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
-$acpi = <ACPI>;
-close(ACPI);
-
-# fail on unexpected output
-if ($acpi !~ /: (\w+), (\d+)%/) {
-	die "$acpi\n";
-}
-
-$status = $1;
-$percent = $2;
-$full_text = "$percent%";
-$icon = "" ;
-
-$short_text = $full_text;
-
-if ($acpi =~ /(\d\d:\d\d):/) {
-	$full_text .= " ($1)";
-}
-
-# consider color and urgent flag only on discharge
-$color = "";
-
-if ($percent < 20) {
-    $color = "#FF0000\n";
-    $icon = "";
-} elsif ($percent < 40) {
-    $color = "#FFAE00\n";
-    $icon = "";
-} elsif ($percent < 60) {
-    $color = "#FFF600\n";
-    $icon = "";
-} elsif ($percent < 85) {
-    $color = "#A8FF00\n";
-    $icon = "";
-} elsif ($percent < 100) {
-    $color = "#A8FF00\n";
-}
-
-# print text
-print "$icon  $full_text\n";
-print "$short_text\n";
-print "$color\n";
-
-exit(0);
+echo "$icon $full_text"
+echo "$full_text"
+echo "$color"
