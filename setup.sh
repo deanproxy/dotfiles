@@ -48,6 +48,12 @@ if [ $linux = 1 ]; then
     if [ -z "`which nm-applet`" ]; then
         sudo apt-get install nm-applet
     fi
+    if [ -z "`which jq`" ]; then
+       sudo apt-get install jq
+    fi
+    if [ -z "`which wget`" ]; then
+       sudo apt-get install wget
+    fi
 
     if [ ! -d "$HOME/.config/i3" ]; then
         mkdir -p "$HOME/.config/i3"
