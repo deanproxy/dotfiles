@@ -69,6 +69,7 @@ Bundle 'kristijanhusak/vim-hybrid-material'
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/closetag.vim'
+Plugin 'altercation/vim-colors-solarized.git'
 
 " Vim bundles
 
@@ -182,9 +183,10 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " color twilight256
 " color jellybeans
 " color molokai
-set background=dark
-color hybrid_material
 " color hybrid
+" color hybrid_material
+set background=dark
+color solarized
 
 set colorcolumn=120
 

@@ -253,6 +253,7 @@ search() {
 }
 
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/dean/Scripts:/home/dean/Scripts
+eval `dircolors ~/.dircolors`
 
 # Load up any files in .zsh we need
 if [ -d ~/.zsh/environment ]; then

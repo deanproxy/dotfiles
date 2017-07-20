@@ -4,11 +4,18 @@ git remote prune origin
 
 exists=0
 yorn='yes'
-shopt -s nocasematch
 
-for i in `git branch`; do 
-    for j in `git branch -r`; do 
-        if [ "origin/${i}" == $j ]; then 
+IFS=$'\n'
+
+for i in $(git branch); do 
+    i=$(echo ${i//[[:blank:]]/})
+    if [ "${i:0:1}" == "*" ]; then
+       # don't do branch we are currently on.
+       continue
+    fi
+    for j in $(git branch -r); do 
+        j=$(echo ${j//[[:blank:]]/})
+        if [ "origin/$i" == "$j" ]; then 
             exists=1
             break 
         fi 
