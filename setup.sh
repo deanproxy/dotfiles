@@ -125,7 +125,7 @@ mv zshrc $HOME/.zshrc
 # Make sure we have a 256 color term
 echo >> $HOME/.zshrc
 echo 'TERM="xterm-256color"' >> $HOME/.zshrc
-echo 'eval "dircolors ~/.dircolors"' >> $HOME/.zshrc
+echo 'eval `dircolors ~/.dircolors`' >> $HOME/.zshrc
 
 # git setup
 git config --global user.name 'dean'
