@@ -4,19 +4,19 @@ percent=`acpi -b | awk '{print $4}' | sed 's/[^0-9]*//g' | awk '{s+=$1} END {pri
 
 full_text="$percent%"
 if [ $percent -lt 20 ]; then
-    color="#FF0000\n"
+    color="#DC322F\n"
     icon=""
 elif [ $percent -lt 40 ]; then
-    color="#FFAE00\n"
+    color="#CB4B16\n"
     icon=""
 elif [ $percent -lt 60 ]; then
-    color="#FFF600\n"
+    color="#B58900\n"
     icon=""
 elif [ $percent -lt 85 ]; then
-    color="#A8FF00\n"
+    color="#83AF40\n"
     icon=""
 else
-    color="#A8FF00\n"
+    color="#83AF40\n"
     icon="" 
 fi
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Check to see if we're docked. If we are, switch monitors.
 
-export DISPLAY=:1
+export DISPLAY=:0
 export XAUTHORITY=/run/user/1000/gdm/Xauthority
 
 if (xrandr | grep "DP2-2 connected"); then

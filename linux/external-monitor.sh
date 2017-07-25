@@ -1,5 +1,5 @@
 #!/bin/sh
-export DISPLAY=:1
+export DISPLAY=:0
 export XAUTHORITY=/run/user/1000/gdm/Xauthority
 
 logger "ACPI event: $*"
