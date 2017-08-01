@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# checks pacman and AUR for updates. 
+
+available=0
+checkupdates="/usr/bin/checkupdates"
+cower="/usr/bin/cower"
+
+if !($cower -u); then
+   available=1
+fi
+if !($checkupdates); then
+   available=1
+fi
+
+if [ $available = 1 ]; then
+   echo " Updates"
+   echo " Updates"
+   echo "#DC322F"
+else
+   echo 
+   echo 
+   echo ""
+fi
