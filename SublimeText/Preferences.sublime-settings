@@ -1,19 +1,24 @@
 {
-	"color_scheme": "Packages/User/DeanOcean.tmTheme",
-	"font_face": "Monospace",
-	"font_size": 12.0,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"font_face": "Hack",
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 	],
+	"material_theme_accent_blue": true,
+	"material_theme_compact_panel": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_statusbar": true,
+	"material_theme_small_tab": true,
+	"material_theme_tabs_separator": true,
 	"rulers":
 	[
-		80
+		120
 	],
-	"tab_size": 4,
-	"tab_width": 4,
+	"tab_size": 3,
+	"theme": "Material-Theme.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"use_simple_full_screen": true,
 	"vintage_start_in_command_mode": true
 }
