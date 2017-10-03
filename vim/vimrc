@@ -184,9 +184,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " color jellybeans
 " color molokai
 " color hybrid
-" color hybrid_material
+color hybrid_material
 set background=dark
-color solarized
+" color solarized
 
 set colorcolumn=120
 
