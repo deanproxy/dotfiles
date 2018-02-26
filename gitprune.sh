@@ -3,9 +3,7 @@
 exists=0
 yorn='y'
 
-git remote prune origin
-
-while getopts ":psd:" o; do 
+while getopts ":pshd:" o; do 
    case "${o}" in
       p)
          only_prune=1
@@ -15,6 +13,14 @@ while getopts ":psd:" o; do
          ;;
       d)
          stale_days=${OPTARG}
+         ;;
+      h)
+         echo "gitprune.sh [-p] [-s] [-d days]"
+         echo "   -p - Prune Only. Prunes and asks if you want to delete local pruned branches."
+         echo "   -s - Doesn't Prune or delete local branches. Asks if you want to delete stale remote branches."
+         echo "        Can use the -d option to specify how many days a branch is stale by."
+         echo "   -d days - How many days must a branch be stale before asking if you want to delete it."
+         exit 0
          ;;
       *)
          ;;
@@ -29,6 +35,7 @@ IFS=$'\n'
 
 # Prune branches
 if [ -z $only_stale ]; then
+   git remote prune origin
    for i in $(git branch); do 
        i=$(echo ${i//[[:blank:]]/})
        if [ "${i:0:1}" == "*" ]; then
@@ -85,6 +92,11 @@ if [ -z $only_prune ]; then
       branch=$(echo $b | awk -F: '{print $2}')
       echo "$branch is $days days old"
    done
+
+   if [ ${#sorted[@]} -eq 0 ]; then
+      exit
+   fi
+
    echo -n "Do you want to kill these? "
    read yorn
    if [ "$yorn" == "yes" ] || [ "$yorn" == "y" ]; then
