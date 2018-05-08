@@ -242,6 +242,7 @@ exec --no-startup-id xss-lock -- ~/.config/polybar/launch.sh
 # exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &
 
 exec_always --no-startup-id xset r rate 300 50
+exec_always --no-startup-id xset +dpms dpms 0 0 900
 #exec_always --no-startup-id xinput --set-prop 12 "libinput Click Method Enabled" 0 1
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
