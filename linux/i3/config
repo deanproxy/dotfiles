@@ -6,7 +6,7 @@ focus_follows_mouse no
 # Window title and bar font
 #font pango:DejaVu Sans Mono 11
 #font pango:Cantarell 11
-font pango: Ubuntu Medium 11
+font pango:Ubuntu Medium 12
 
 # Border size
 new_window pixel 2
@@ -76,16 +76,16 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "1:Browser "
-set $ws2 "2:Editor "
-set $ws3 "3:Chat "
-set $ws4 "4:E-Mail "
-set $ws5 "5:Workspace "
-set $ws6 "6:Workspace "
-set $ws7 "7:Workspace "
-set $ws8 "8:Workspace "
-set $ws9 "9:Workspace "
-set $ws10 "10:Workspace "
+set $ws1 "1:web"
+set $ws2 "2:code"
+set $ws3 "3:music"
+set $ws4 "4:email"
+set $ws5 "5:workspace"
+set $ws6 "6:workspace"
+set $ws7 "7:workspace"
+set $ws8 "8:workspace"
+set $ws9 "9:workspace"
+set $ws10 "10:workspace"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -112,16 +112,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign workspaces to monitors
-workspace $ws1 output DP-1
-workspace $ws2 output DP-1
-workspace $ws3 output DP-1
-workspace $ws4 output eDP-1
-workspace $ws5 output DP-1
-workspace $ws6 output DP-1
-workspace $ws7 output DP-1
-workspace $ws8 output DP-1
-workspace $ws9 output DP-1
-workspace $ws10 output DP-1
+workspace $ws1 output DP2-2
+workspace $ws2 output DP2-2
+workspace $ws3 output DP2-2
+workspace $ws4 output eDP1
+workspace $ws5 output DP2-2
+workspace $ws6 output DP2-2
+workspace $ws7 output DP2-2
+workspace $ws8 output DP2-2
+workspace $ws9 output DP2-2
+workspace $ws10 output DP2-2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -161,24 +161,24 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock screen
-bindsym $mod+Shift+x exec "i3lock -c 000000"
+bindsym $mod+Shift+x exec ~/Scripts/screenlock.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    position top
-    status_command i3blocks -c /home/dean/.config/i3/i3blocks.conf
-    tray_output primary
-    colors {
-        separator #969896
-        background #010101
-        statusline #c5c8c6
-        focused_workspace #81a2be #81a2be #1d1f21
-        active_workspace #373b41 #373b41 #ffffff
-        inactive_workspace #282a2e #0F0F0F #969896
-        urgent_workspace #cc6666 #cc6666 #ffffff
-    }
-}
+# bar {
+    # position top
+    # status_command i3blocks -c /home/dean/.config/i3/i3blocks.conf
+    # tray_output primary
+    # colors {
+        # separator #969896
+        # background #010101
+        # statusline #c5c8c6
+        # focused_workspace #81a2be #81a2be #1d1f21
+        # active_workspace #373b41 #373b41 #ffffff
+        # inactive_workspace #282a2e #0F0F0F #969896
+        # urgent_workspace #cc6666 #cc6666 #ffffff
+    # }
+# }
 
 # Audio bindings 
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
@@ -205,6 +205,7 @@ bindsym --release Print exec "scrot -e 'imgur $f | xclip -selection clipboard;\
 bindsym --release Ctrl+Print exec "scrot -s -e 'imgur $f | xclip -selection clipboard;\
    i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
    -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
+bindsym --release Ctrl+Shift+Print exec "scrot -s"
 
 # Fix monitor outpus
 bindsym $mod+Shift+m exec ~/Scripts/docked.sh
@@ -214,10 +215,12 @@ bindsym $mod+c exec gsimplecal
 
 # what to do with certain apps
 # for_window [class="Empathy"] floating enable resize grow width 300px; resize grow height 400px;
+for_window [class="Gnome-calendar"] floating enable
 
 # default workspaces (use xprop)
-assign [class="Google-chrome"] $ws1
-assign [class="firefox"] $ws1
+# assign [class="Google-chrome"] $ws1
+assign [class="Chromium"] $ws1
+# assign [class="firefox"] $ws1
 assign [class="Atom"] $ws2
 assign [class="spotify"] $ws3
 assign [class="slack"] $ws3
@@ -225,20 +228,27 @@ assign [class="yakyak"] $ws3
 assign [class="Thunderbird"] $ws4
 
 exec --no-startup-id ~/Scripts/docked.sh
-exec synclient TapButton1=0 TapButton2=0 PalmDetect=1 \
-               RightButtonAreaLeft=0 RightButtonAreaTop=0
+# exec synclient TapButton1=0 TapButton2=0 PalmDetect=1 \
+               # RightButtonAreaLeft=0 RightButtonAreaTop=0
 exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -f -b --backend=glx 
-exec --no-startup-id autokey-gtk
-# exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &
+# exec --no-startup-id compton -f -b --backend=glx 
+exec --no-startup-id compton -b
 exec --no-startup-id ~/Scripts/background.sh
-exec --no-startup-id dropbox start
-# exec --no-startup-id pactl load-module module-bluetooth-discover
-exec --no-startup-id xset r rate 300 50
+exec --no-startup-id xss-lock -- ~/.config/polybar/launch.sh
+# exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &
+
+exec_always --no-startup-id xset r rate 300 50
+#exec_always --no-startup-id xinput --set-prop 12 "libinput Click Method Enabled" 0 1
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # start certain aps
-exec --no-startup-id yakyak
+#exec --no-startup-id yakyak
+#exec --no-startup-id slack
+#exec --no-startup-id chromium
 
 # colorclass            border  backgr. text    indicator  childbdr   
 client.focused          #000000 #000000 #1d1f21 #5e3c58    #83adb5
