@@ -2,28 +2,25 @@
 
 temp_file="/tmp/screen.png"
 overlays=("/home/dean/Scripts/rick-explain.png" "/home/dean/Scripts/rick.png")
-width=1920
-height=1080
+dimensions=`xdpyinfo | grep -oP 'dimensions:\s+\K\S+'`
 blur=10
-display="eDP1"
 pos_h="(main_h-overlay_h)/2"
 pos_w="(main_w-overlay_w)/2"
 
-if (xrandr | grep "DP2-2 connected"); then
-   display="DP2-2"
-   width=2560
-   height=1440
+if [ -z "$dimensions" ]; then
+   dimensions="1920x1080"
 fi
-
 overlay=${overlays[$((RANDOM % 2))]}
 if [ "$overlay" == "/home/dean/Scripts/rick.png" ]; then
    pos_h="(main_h-overlay_h)"
    pos_w="(main_w-overlay_w)/2"
 fi
 
-ffmpeg -f x11grab -video_size "${width}x${height}" -y -i $DISPLAY -i $overlay -filter_complex "boxblur=${blur}:${blur},overlay=${pos_w}:${pos_h},boxblur=0:0" -vframes 1 $temp_file
+nice -20 ffmpeg -f x11grab -video_size "${dimensions}" -y -i $DISPLAY -i $overlay -filter_complex "boxblur=${blur}:${blur},overlay=${pos_w}:${pos_h},boxblur=0:0" -vframes 1 $temp_file
 
-i3lock -i $temp_file
+xset +dpms dpms 0 0 900
+i3lock -n -i $temp_file
+xset -dpms
 rm -f $temp_file
 
 # NOTE: below is a slower way to accomplish the same thing above

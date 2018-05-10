@@ -205,7 +205,7 @@ bindsym --release Print exec "scrot -e 'imgur $f | xclip -selection clipboard;\
 bindsym --release Ctrl+Print exec "scrot -s -e 'imgur $f | xclip -selection clipboard;\
    i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
    -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
-bindsym --release Ctrl+Shift+Print exec "scrot -s"
+bindsym --release Ctrl+Shift+Print exec "scrot -q 100 -s"
 
 # Fix monitor outpus
 bindsym $mod+Shift+m exec ~/Scripts/docked.sh
@@ -238,11 +238,11 @@ exec --no-startup-id nm-applet
 # exec --no-startup-id compton -f -b --backend=glx 
 exec --no-startup-id compton -b
 exec --no-startup-id ~/Scripts/background.sh
-exec --no-startup-id xss-lock -- ~/.config/polybar/launch.sh
-# exec --no-startup-id xautolock -time 5 -locker 'i3lock -c 000000' &
+exec --no-startup-id xss-lock -- ~/Scripts/screenlock.sh
+exec --no-startup-id xautolock -time 5 -locker ~/Scripts/screenlock.sh &
 
 exec_always --no-startup-id xset r rate 300 50
-exec_always --no-startup-id xset +dpms dpms 0 0 900
+exec_always --no-startup-id xset -dpms dpms 0 0 0
 #exec_always --no-startup-id xinput --set-prop 12 "libinput Click Method Enabled" 0 1
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
