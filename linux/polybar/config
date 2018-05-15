@@ -31,7 +31,7 @@ tray-scale = 1.0
 
 ; modules-left = mpd
 modules-left = i3
-modules-right = spotify bluetooth volume backlight battery date 
+modules-right = spotify updates weather bluetooth volume backlight battery date 
 
 [bar/bottom]
 bottom = true
@@ -51,21 +51,35 @@ module-margin-right = 6
 
 font-0 = NotoSans-Regular:size=11;0
 font-1 = unifont:size=8;-3
-font-2 = "Font Awesome 5 Free:style=Regular;size=11"
-font-3 = "Font Awesome 5 Free:style=Solid;size=11"
-font-4 = "Font Awesome 5 Brands:size=11"
-font-5 = NotoSans-Regular:size=11;-1
-font-6 = MaterialIcons:size=11;-1
-font-7 = Termsynu:size=11:antialias=false;0
+font-2 = WeatherIcons:size=11
+font-3 = "Font Awesome 5 Free:style=Regular;size=11"
+font-4 = "Font Awesome 5 Free:style=Solid;size=11"
+font-5 = "Font Awesome 5 Brands:size=11"
+font-6 = NotoSans-Regular:size=11;-1
+font-7 = MaterialIcons:size=11;-1
+font-8 = Termsynu:size=11:antialias=false;0
 
 ; modules-left = mpd
 modules-left = powermenu
 modules-right = cpu memory fs
 
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/weather
+interval = 600
+label-font = 3
+
+[module/updates]
+type = custom/script
+interval = 300
+format = <label>
+label-foreground = #83af40
+exec = ~/.config/polybar/archupdates
+
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = "  "
+format-prefix = "  "
 format = <label>
 ; format-underline = #268bd2
 label-foreground = #81a2be

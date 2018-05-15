@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# checks pacman and AUR for updates. 
+
+available=0
+checkupdates="/usr/bin/checkupdates"
+cower="/usr/bin/cower"
+
+available=$(($($checkupdates | wc -l) + $($cower -u | wc -l)))
+
+if [ $available != 0 ]; then
+   echo "   $available Updates"
+fi
