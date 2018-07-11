@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+/usr/bin/xset -display :0 dpms force on
+/home/dean/Scripts/docked.sh
+
+
