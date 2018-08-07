@@ -1,0 +1,14 @@
+[Unit]
+Description=Run monitor check every second
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=false
+AccuracySec=1sec
+OnCalendar=*:*:0/2
+Unit=monitor.service
+
+[Install]
+WantedBy=timers.target
+

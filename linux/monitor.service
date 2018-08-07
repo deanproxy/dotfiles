@@ -1,0 +1,11 @@
+[Unit]
+Description=Monitor Service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/dean/Scripts/docked.sh
+
+[Install]
+WantedBy=default.target
+
