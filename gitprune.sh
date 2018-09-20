@@ -56,7 +56,7 @@ if [ -z $only_stale ]; then
            fi
            if [ "$yorn" == "yes" ] || [ "$yorn" == "y" ]; then
                echo -n "Deleting $i: "
-               git branch -d "$i"
+               git branch -D "$i"
            fi
        fi
        exists=0

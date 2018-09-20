@@ -11,7 +11,7 @@ font pango:Ubuntu Medium 12
 # Border size
 new_window pixel 2
 
-gaps inner 7 
+gaps inner 15 
 gaps outer 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -112,16 +112,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign workspaces to monitors
-workspace $ws1 output DP2-2
-workspace $ws2 output DP2-2
-workspace $ws3 output DP2-2
-workspace $ws4 output eDP1
-workspace $ws5 output DP2-2
-workspace $ws6 output DP2-2
-workspace $ws7 output DP2-2
-workspace $ws8 output DP2-2
-workspace $ws9 output DP2-2
-workspace $ws10 output DP2-2
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-1
+workspace $ws8 output DP-1
+workspace $ws9 output DP-1
+workspace $ws10 output DP-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,13 +199,9 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots!
-bindsym --release Print exec "scrot -e 'imgur $f | xclip -selection clipboard;\
-   i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
-   -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
-bindsym --release Ctrl+Print exec "scrot -s -e 'imgur $f | xclip -selection clipboard;\
-   i3-nagbar -t warning -f \\"pango:Ubuntu Medium 11\\" \
-   -m \\"Screenshot saved to clipboard - `xclip -selection clipboard -o`\\"; rm -f $f'"
-bindsym --release Ctrl+Shift+Print exec "scrot -q 100 -s"
+bindsym --release Print exec "scrot -e 'xclip -selection c -t image/png $f && rm -f $f'"
+bindsym --release Ctrl+Print exec "scrot -s -e 'xclip -selection c -t image/png $f && rm -f $f'"
+bindsym --release Ctrl+Shift+Print exec "scrot -q 100 -s -e 'mv $f ~/shots/'"
 
 # Fix monitor outpus
 bindsym $mod+Shift+m exec ~/Scripts/docked.sh
@@ -216,10 +212,14 @@ bindsym $mod+c exec gsimplecal
 # what to do with certain apps
 # for_window [class="Empathy"] floating enable resize grow width 300px; resize grow height 400px;
 for_window [class="Gnome-calendar"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="Gnome-control-center"] floating enable
+for_window [class="Gnome-tweaks"] floating enable
+for_window [class="Nautilus"] floating enable
 
 # default workspaces (use xprop)
 # assign [class="Google-chrome"] $ws1
-assign [class="Chromium"] $ws1
+# assign [class="Chromium"] $ws1
 # assign [class="firefox"] $ws1
 assign [class="Atom"] $ws2
 assign [class="spotify"] $ws3
@@ -227,7 +227,7 @@ assign [class="slack"] $ws3
 assign [class="yakyak"] $ws3
 assign [class="Thunderbird"] $ws4
 
-exec --no-startup-id ~/Scripts/docked.sh
+exec_always --no-startup-id ~/Scripts/docked.sh
 # exec synclient TapButton1=0 TapButton2=0 PalmDetect=1 \
                # RightButtonAreaLeft=0 RightButtonAreaTop=0
 exec --no-startup-id gnome-settings-daemon
@@ -239,12 +239,13 @@ exec --no-startup-id nm-applet
 exec --no-startup-id compton -b
 exec --no-startup-id ~/Scripts/background.sh
 exec --no-startup-id xss-lock -- ~/Scripts/screenlock.sh
-exec --no-startup-id xautolock -time 5 -locker ~/Scripts/screenlock.sh &
+# exec --no-startup-id xautolock -time 5 -locker ~/Scripts/screenlock.sh &
 
 exec_always --no-startup-id xset r rate 300 50
-exec_always --no-startup-id xset -dpms dpms 0 0 0
+#exec_always --no-startup-id xset -dpms dpms 0 0 0
 #exec_always --no-startup-id xinput --set-prop 12 "libinput Click Method Enabled" 0 1
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id setxkbmap -option caps:ctrl_modifier
 
 # start certain aps
 #exec --no-startup-id yakyak
@@ -254,6 +255,6 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # colorclass            border  backgr. text    indicator  childbdr   
 client.focused          #000000 #000000 #1d1f21 #5e3c58    #83adb5
 client.focused_inactive #373b41 #373b41 #771f1f
-client.unfocused        #000000 #000000 #969896 #ffffff
+client.unfocused        #666666 #666666 #969896 #ffffff
 client.urgent           #373b41 #cc6666 #ffffff #cc6666
 

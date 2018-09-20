@@ -2,7 +2,7 @@
 # Check to see if we're docked. If we are, switch monitors.
 
 export DISPLAY=:0
-export XAUTHORITY=/run/user/1000/gdm/Xauthority
+export XAUTHORITY=/home/dean/.Xauthority
 
 sysdir="/sys/class/drm/card0-"
 external_monitors=("DP-1")
@@ -43,3 +43,13 @@ fi
    # xrandr --output eDP-1 --auto --primary --output DP-1 --off --output DP2-2 --off 
 # fi
 feh --bg-scale ~/Dropbox/Photos/Wallpapers/mountainbike1.jpg
+# Turn off the fucking bell
+/usr/bin/xset -display :0 b off
+/usr/bin/xset -display :0 r rate 300 80
+
+# Fix touchpad
+touchpad="SynPS/2 Synaptics TouchPad"
+id=$(xinput | grep "$touchpad" | awk '{print $6}' | sed s/id=//)
+if [ ! -z "$id" ]; then
+   xinput --set-prop $id "libinput Click Method Enabled" 0 1
+fi
