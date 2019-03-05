@@ -127,9 +127,9 @@ label-urgent-foreground = #ffffff
 label-urgent-background = #cc6666
 label-urgent-padding = 4
 
-label-separator = |
-label-separator-padding = 2
-label-separator-foreground = #ffb52a
+; label-separator = |
+; label-separator-padding = 0
+; label-separator-foreground = #e8e8e8
 
 [module/backlight]
 type = internal/xbacklight
@@ -187,7 +187,7 @@ type = internal/fs
 mount-0 = /
 interval = 10
 fixed-values = true
-label-mounted = DISK %mountpoint%: %%{F#83af40}%free%%{F-} Free
+label-mounted = DISK %mountpoint%: %{F#83af40}%free%%{F-} Free
 spacing = 4
 
 [module/cpu]
@@ -230,8 +230,8 @@ date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
 [module/memory]
 type = internal/memory
-format = <label> <bar-used>
-label = RAM
+format = RAM   <bar-used> <label>
+label = %gb_free% Free
 
 bar-used-width = 30
 bar-used-foreground-0 = #83af40
@@ -307,12 +307,13 @@ bar-used-empty-foreground = #ffffff
 
 [module/volume]
 type = internal/volume
-master-soundcard = hw:0
-speaker-soundcard = hw:0
+; master-soundcard = hw:0
+; speaker-soundcard = hw:0
+; mapped = true
 ; headphone-soundcard = hw:0
 
-master-mixer = Master
-speaker-mixer = Speaker
+; master-mixer = Master
+; speaker-mixer = Speaker
 ; headphone-mixer = Headphone
 ; headphone-id = 9
 

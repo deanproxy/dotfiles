@@ -224,3 +224,6 @@ let jshint2_save = 1
 
 let g:indentLine_color_term = 237
 " let g:indentLine_char = '.'
+
+" Command notes
+" dt <c> = delete up to next character, where <c> is the character

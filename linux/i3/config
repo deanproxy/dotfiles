@@ -24,7 +24,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun -theme ~/.local/share/rofi/themes/sidetab.rasi
+bindsym $mod+d exec rofi -show drun -yoffset 32 -theme ~/.local/share/rofi/themes/sidetab.rasi
 
 # change focus
 bindsym $mod+j focus left
@@ -182,11 +182,11 @@ bindsym $mod+Shift+x exec ~/Scripts/screenlock.sh
 
 # Audio bindings 
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
-    pactl set-sink-volume 0 +1%
+    pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym XF86AudioLowerVolume exec --no-startup-id \
-    pactl set-sink-volume 0 -1%
+    pactl set-sink-volume @DEFAULT_SINK@ -1%
 bindsym XF86AudioMute exec --no-startup-id        \
-    pactl set-sink-mute 0 toggle
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
@@ -199,9 +199,10 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screenshots!
-bindsym --release Print exec "scrot -e 'xclip -selection c -t image/png $f && rm -f $f'"
-bindsym --release Ctrl+Print exec "scrot -s -e 'xclip -selection c -t image/png $f && rm -f $f'"
-bindsym --release Ctrl+Shift+Print exec "scrot -q 100 -s -e 'mv $f ~/shots/'"
+# bindsym --release Print exec "scrot -e 'xclip -selection c -t image/png $f && rm -f $f'"
+# bindsym --release Ctrl+Print exec "scrot -s -e 'xclip -selection c -t image/png $f && rm -f $f'"
+# bindsym --release Ctrl+Shift+Print exec "scrot -q 100 -s -e 'mv $f ~/shots/'"
+bindsym --release Ctrl+Print exec deepin-screenshot
 
 # Fix monitor outpus
 bindsym $mod+Shift+m exec ~/Scripts/docked.sh
@@ -227,17 +228,22 @@ assign [class="slack"] $ws3
 assign [class="yakyak"] $ws3
 assign [class="Thunderbird"] $ws4
 
-exec_always --no-startup-id ~/Scripts/docked.sh
+# exec_always --no-startup-id ~/Scripts/docked.sh
 # exec synclient TapButton1=0 TapButton2=0 PalmDetect=1 \
                # RightButtonAreaLeft=0 RightButtonAreaTop=0
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec --no-startup-id gnome-flashback
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id gnome-power-manager
+# Note on Gnome notifications
+# To turn off gnome-flashback from using its own notifications:
+#  gsettings set org.gnome.gnome-flashback notifications false
+# Set that to true to re-enable them. If they're enabled, dunst won't work.
 
 exec --no-startup-id nm-applet
-# exec --no-startup-id compton -f -b --backend=glx 
-exec --no-startup-id compton -b
-exec --no-startup-id ~/Scripts/background.sh
+exec --no-startup-id compton -f -b --backend glx --paint-on-overlay --vsync opengl-swc
+exec_always --no-startup-id ~/Scripts/background.sh
 exec --no-startup-id xss-lock -- ~/Scripts/screenlock.sh
 # exec --no-startup-id xautolock -time 5 -locker ~/Scripts/screenlock.sh &
 

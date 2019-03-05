@@ -30,7 +30,7 @@ window.ssd headerbar.titlebar button.titlebutton {
 }
 
 window.ssd headerbar.titlebar {
-   border: 1px solid #d43f3a;
+   border: 1px solid #5795C9;
    border-width: 1px 0 0 0;
 }
 window.ssd headerbar.titlebar:backdrop { 
