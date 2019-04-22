@@ -11,3 +11,5 @@ rofi.bw: 0
 rofi.hide-scrollbar: true
 rofi.line-padding: 15
 rofi.show-icons: true
+rofi.font: Ubuntu 12
+rofi.location: 2
