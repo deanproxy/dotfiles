@@ -4,10 +4,12 @@
 
 available=0
 checkupdates="/usr/bin/checkupdates"
-cower="/usr/bin/cower"
+auracle="/usr/bin/auracle"
 
-available=$(($($checkupdates | wc -l) + $($cower -u | wc -l)))
+available=$(($($checkupdates | wc -l) + $($auracle sync | wc -l)))
 
 if [ $available != 0 ]; then
    echo "   $available Updates"
+else
+   echo
 fi

@@ -38,4 +38,6 @@ if [ ! -z "$connections" ]; then
       fi
    fi
    echo $name
+else
+   echo
 fi
