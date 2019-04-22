@@ -12,12 +12,13 @@ configuration {
 }
 
 * {
-	background-color:            #080808;
+	background-color:            #08080877;
 	text-color:                  #d3d7cf;
-	selbg:                       #215d9c;
-	actbg:                       #262626;
-	urgbg:                       #e53935;
-	winbg:			     #26c6da;
+   sel-text-color:              #268bd2;
+	selbg:                       #08080800;
+   actbg:                       #08080800;
+	urgbg:                       #08080800;
+	winbg:			              #08080800;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
@@ -43,24 +44,25 @@ configuration {
 }
 
 window {
-	location:	 west;
-	anchor:		 west;
-	height:		 100%;
-	width:		 22%;
+   transparency: "real";
+	location:	 2;
+	height:		 30%;
+	width:		 30%;
 	orientation: horizontal;
 	children:	 [mainbox];
 }
 
 mainbox {
-	spacing:  0.8em;
-	children: [ entry,listview,sidebar ];
+	spacing:  0;
+	children: [ sidebar,listview,entry ];
 }
 
-button { padding: 5px 2px; }
+button { padding: 8px 2px; }
 
 button selected {
-	background-color: @active-background;
-	text-color:       @background-color;
+	text-color:       #ffffff;
+	border:           0 0 5px solid 0;
+	border-color:	   @sel-text-color;
 }
 
 inputbar {
@@ -69,9 +71,11 @@ inputbar {
 }
 
 listview {
-	spacing: 0.5em;
-	dynamic: false;
-	cycle:   true;
+   padding: 0;
+	spacing: 0.8em;
+	dynamic: true;
+	cycle:   false;
+   reverse: true;
 }
 
 element { padding: 10px; }
@@ -80,12 +84,14 @@ entry {
 	expand:         false;
 	text-color:     @normal-foreground;
 	vertical-align: 1;
-	padding:        5px;
+	padding:        15px 10px;
 }
 
 element normal.normal {
-	background-color: @normal-background;
+	background-color: #ffffff00;
 	text-color:       @normal-foreground;
+   border:           0 0 0 5px solid;
+   border-color:     #ffffff00;
 }
 
 element normal.urgent {
@@ -99,10 +105,10 @@ element normal.active {
 }
 
 element selected.normal {
-	background-color: @selected-normal-background;
-	text-color:       @selected-normal-foreground;
-	border:           0 5px solid 0 0;
-	border-color:	    @active-background;
+	background-color: @normal-background;
+	text-color:       @sel-text-color;
+	border:           0 0 0 5px solid;
+	border-color:	   @sel-text-color;
 }
 
 element selected.urgent {
@@ -116,8 +122,10 @@ element selected.active {
 }
 
 element alternate.normal {
-	background-color: @normal-background;
+	background-color: #ffffff00;
 	text-color:       @normal-foreground;
+   border:           0 0 0 5px solid;
+   border-color:     #ffffff00;
 }
 
 element alternate.urgent {
