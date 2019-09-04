@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-ARTIST=`playerctl metadata artist 2>/dev/null`
-SONG=`playerctl metadata title 2>/dev/null`
+PLAYER="spotify"
+ARTIST=`playerctl -p $PLAYER metadata artist 2>/dev/null`
+SONG=`playerctl  -p $PLAYER metadata title 2>/dev/null`
 
 echo "${ARTIST} - ${SONG}"
