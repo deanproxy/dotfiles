@@ -24,7 +24,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun -yoffset 32 -theme ~/.local/share/rofi/themes/sidetab.rasi
+bindsym $mod+d exec rofi -show drun -location 2 -theme ~/.local/share/rofi/themes/sidetab.rasi
 
 # change focus
 bindsym $mod+j focus left
@@ -112,16 +112,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Assign workspaces to monitors
-workspace $ws1 output DP-1
-workspace $ws2 output DP-1
-workspace $ws3 output DP-1
-workspace $ws4 output DP-1
-workspace $ws5 output DP-1
-workspace $ws6 output DP-1
-workspace $ws7 output DP-1
-workspace $ws8 output DP-1
-workspace $ws9 output DP-1
-workspace $ws10 output DP-1
+workspace $ws1 output DP-0
+workspace $ws2 output DP-0
+workspace $ws3 output DP-0
+workspace $ws4 output DP-0
+workspace $ws5 output DP-0
+workspace $ws6 output DP-0
+workspace $ws7 output DP-0
+workspace $ws8 output DP-0
+workspace $ws9 output DP-0
+workspace $ws10 output DP-0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -182,9 +182,9 @@ bindsym $mod+Shift+x exec ~/Scripts/screenlock.sh
 
 # Audio bindings 
 bindsym XF86AudioRaiseVolume exec --no-startup-id \
-    pactl set-sink-volume @DEFAULT_SINK@ +1%
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id \
-    pactl set-sink-volume @DEFAULT_SINK@ -1%
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id        \
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
@@ -202,7 +202,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # bindsym --release Print exec "scrot -e 'xclip -selection c -t image/png $f && rm -f $f'"
 # bindsym --release Ctrl+Print exec "scrot -s -e 'xclip -selection c -t image/png $f && rm -f $f'"
 # bindsym --release Ctrl+Shift+Print exec "scrot -q 100 -s -e 'mv $f ~/shots/'"
-bindsym --release Ctrl+Print exec deepin-screenshot
+bindsym --release Ctrl+Print exec deepin-screenshot -n
 
 # Fix monitor outpus
 bindsym $mod+Shift+m exec ~/Scripts/docked.sh
@@ -217,34 +217,38 @@ for_window [class="Gnome-calculator"] floating enable
 for_window [class="Gnome-control-center"] floating enable
 for_window [class="Gnome-tweaks"] floating enable
 for_window [class="Nautilus"] floating enable
+for_window [class="1Password"] floating enable
+for_window [class="zoom"] floating enable
 
 # default workspaces (use xprop)
-# assign [class="Google-chrome"] $ws1
 # assign [class="Chromium"] $ws1
 # assign [class="firefox"] $ws1
+assign [class="Google-chrome"] $ws1
+assign [class="Brave"] $ws4
 assign [class="Atom"] $ws2
 assign [class="spotify"] $ws3
-assign [class="slack"] $ws3
-assign [class="yakyak"] $ws3
-assign [class="Thunderbird"] $ws4
+assign [class="Slack"] $ws3
+assign [class="jetbrains-webstorm"] $ws2
 
 # exec_always --no-startup-id ~/Scripts/docked.sh
 # exec synclient TapButton1=0 TapButton2=0 PalmDetect=1 \
                # RightButtonAreaLeft=0 RightButtonAreaTop=0
+#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec --no-startup-id gnome-settings-daemon
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec --no-startup-id gnome-flashback
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
 # Note on Gnome notifications
 # To turn off gnome-flashback from using its own notifications:
 #  gsettings set org.gnome.gnome-flashback notifications false
 # Set that to true to re-enable them. If they're enabled, dunst won't work.
 
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -f -b --backend glx --paint-on-overlay --vsync opengl-swc
+exec --no-startup-id picom -i 1 -f -b --backend glx --fade-in-step 0.05 --fade-out-step 0.05 --xrender-sync-fence
 exec_always --no-startup-id ~/Scripts/background.sh
 exec --no-startup-id xss-lock -- ~/Scripts/screenlock.sh
+exec --no-startup-id xfce4-clipman
 # exec --no-startup-id xautolock -time 5 -locker ~/Scripts/screenlock.sh &
 
 exec_always --no-startup-id xset r rate 300 50
@@ -254,6 +258,11 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id setxkbmap -option caps:ctrl_modifier
 
 # start certain aps
+exec --no-startup-id google-chrome
+exec --no-startup-id brave
+exec --no-startup-id slack
+exec --no-startup-id spotify
+exec --no-startup-id webstorm
 #exec --no-startup-id yakyak
 #exec --no-startup-id slack
 #exec --no-startup-id chromium

@@ -3,8 +3,9 @@
 exists=0
 yorn='y'
 say_no=0
+say_yes=0
 
-while getopts ":pshnd:" o; do 
+while getopts ":pshnyd:" o; do 
    case "${o}" in
       p)
          only_prune=1
@@ -18,12 +19,16 @@ while getopts ":pshnd:" o; do
       n)
          say_no=1
          ;;
+      y)
+         say_yes=1
+         ;;
       h)
          echo "gitprune.sh [-p] [-s] [-d days]"
          echo "   -p - Prune Only. Prunes and asks if you want to delete local pruned branches."
          echo "   -s - Doesn't Prune or delete local branches. Asks if you want to delete stale remote branches."
          echo "        Can use the -d option to specify how many days a branch is stale by."
          echo "   -n - Say no to deleting stale branches."
+         echo "   -y - Say yes to deleting local branches."
          echo "   -d days - How many days must a branch be stale before asking if you want to delete it."
          exit 0
          ;;
@@ -56,11 +61,11 @@ if [ -z $only_stale ]; then
            fi 
        done 
        if [ $exists == 0 ]; then
-           if [ -z "$1" ] || [ "$1" != '-y' ]; then
+           if [ $say_yes == 0 ]; then
                echo -n "Delete $i? "
                read yorn
            fi
-           if [ "$yorn" == "yes" ] || [ "$yorn" == "y" ]; then
+           if [ $say_yes == 1 ] || [ "$yorn" == "yes" ] || [ "$yorn" == "y" ]; then
                echo -n "Deleting $i: "
                git branch -D "$i"
            fi
